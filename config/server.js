@@ -29,6 +29,7 @@ app.use(expressValidator());
 /* configurar o consign, para fazer o autoload das rotas, models e controllers para o app*/
 consign()
 	.include('app/routes')
+	.then('config/dbConnection.js')//aqui precisa colocar o js pra que o consign entenda que é so esse modulo dentro do config
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);

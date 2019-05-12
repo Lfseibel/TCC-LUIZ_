@@ -14,30 +14,30 @@
     <header class="cadastro_header">
       <h1 class="titulo">ÁREA DE CADASTRO</h1>
     </header>
-    <form class="form">
+    <form class="form" action="/alunos/salvar" method="post">
       <div>
-        <input type="text" placeholder="Nome Completo" class="form_input">
+        <input type="text" placeholder="Nome Completo" class="form_input" id="nome" name="nome">
       </div>
       <div>
-        <input type="text" placeholder="RA" class="form_input">
+        <input type="text" placeholder="RA" class="form_input" id="ra" name="ra">
       </div>
       <div>
-        <input type="text" placeholder="CPF" class="form_input">
+        <input type="text" placeholder="CPF" class="form_input" id="cpf" name="cpf">
       </div>
       <div>
-        <input type="text" placeholder="RG" class="form_input">
+        <input type="text" placeholder="RG" class="form_input" id="rg" name="rg">
       </div>
       <div>
-        <input type="text" placeholder="Período" class="form_input">
+        <input type="text" placeholder="Período" class="form_input" id="periodo" name="periodo">
       </div>
       <div>
-        <input type="email" placeholder="E-mail" class="form_input" required>
+        <input type="email" placeholder="E-mail" class="form_input" id="email" name="email" required>
       </div>
       <div>
-        <input type="password" placeholder="Senha" class="form_input" required>
+        <input type="password" placeholder="Senha" class="form_input" id="senha" name="senha" required>
       </div>
       <div>
-        <input type="password" placeholder="Confirme sua senha" class="form_input" required>
+        <input type="password" placeholder="Confirme sua senha" class="form_input" id="c_senha" required>
       </div>
       <button class="btn" type="button">CADASTRAR</button>
     </form>

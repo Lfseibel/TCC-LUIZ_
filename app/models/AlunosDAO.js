@@ -2,8 +2,12 @@ function AlunosDAO(connection){//classe com objetivo de acesso a dados data aces
 	this._connection = connection;
 }
 
-AlunosDAO.prototype.salvarAluno = function(aluno, callback){
-	this._connection.query('insert into alunos set ? ', aluno, callback);//jason na funcao query e inseri quando acha o ?
+AlunosDAO.prototype.salvarAluno = function(usuario, callback){
+	this._connection.query('insert into usuario set ? ', usuario, callback);//jason na funcao query e inseri quando acha o ?
+}
+
+AlunosDAO.prototype.salvarAluno = function(login, callback){
+	this._connection.query('select * from usuario where ra_usuario = ?', login.ra_usuario, callback);//jason na funcao query e inseri quando acha o ?
 }
 
 module.exports = function(){

@@ -10,42 +10,55 @@
 </head>
 
 <body>
+    <% if(validacao.length > 0) { %>
+      <div>
+        <div>
+          <div>
+            <ul>
+              <% for(var i = 0; i < validacao.length; i++) { %>
+              <li><%= validacao[i].msg %></li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% } %>
   <div class="cadastro">
     <header class="cadastro_header">
       <h1 class="titulo">ÁREA DE CADASTRO</h1>
     </header>
     <form class="form" action="/alunos/salvar" method="post">
       <div>
-        <input type="text" placeholder="Nome Completo" class="form_input" id="nome" name="nome">
+        <input type="text" placeholder="Nome Completo" class="form_input" id="nome" name="nome_usuario">
       </div>
       <div>
-        <input type="text" placeholder="RA" class="form_input" id="ra" name="ra">
+        <input type="text" placeholder="RA" class="form_input" id="ra" name="ra_usuario">
       </div>
       <div>
-        <input type="text" placeholder="CPF" class="form_input" id="cpf" name="cpf">
+        <input type="text" placeholder="CPF" class="form_input" id="cpf" name="cpf_usuario">
       </div>
       <div>
-        <input type="text" placeholder="RG" class="form_input" id="rg" name="rg">
+        <input type="text" placeholder="RG" class="form_input" id="rg" name="rg_usuario">
       </div>
       <div>
-        <input type="text" placeholder="Período" class="form_input" id="periodo" name="periodo">
+        <input type="text" placeholder="Período" class="form_input" id="periodo" name="periodo_usuario">
       </div>
       <div>
-        <input type="email" placeholder="E-mail" class="form_input" id="email" name="email" required>
+        <input type="email" placeholder="E-mail" class="form_input" id="email" name="email_usuario" required>
       </div>
       <div>
-        <input type="password" placeholder="Senha" class="form_input" id="senha" name="senha" required>
+        <input type="password" placeholder="Senha" class="form_input" id="senha" name="senha_usuario" required>
       </div>
       <div>
         <input type="password" placeholder="Confirme sua senha" class="form_input" id="c_senha" required>
       </div>
-      <button class="btn" type="button">CADASTRAR</button>
+      <button class="btn" type="submit">CADASTRAR</button>
     </form>
   </div>
   <div class="logo">
     <a href="/"><img src="img/logoif.png" alt='some text' width=50px height=66px></a>
   </div>
-  <script src="js/cadastro.js"></script>
+
 </body>
 
 </html>

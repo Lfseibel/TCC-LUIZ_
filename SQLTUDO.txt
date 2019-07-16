@@ -1,0 +1,1 @@
+Create table usuario (id_usuario int not null primary key auto_increment,nome_usuario varchar(100),ra_usuario varchar(6),cpf_usuario varchar(11),rg_usuario varchar(10),periodo_usuario varchar(10),email_usuario varchar(100),senha_usuario varchar(100));

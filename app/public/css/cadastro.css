@@ -132,3 +132,21 @@ input:focus {
   transform: translate3d(0, 1000px, 0);
   animation: arrive 500ms ease-in-out 0.4s forwards;
 }
+
+@media (min-width: 1400px) {
+  body{
+    overflow: hidden;
+  }
+}
+/*custonomização scroll*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background: #c5c5c5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #858585;
+  border-radius: 7.5px;
+}
+/*fim scroll*/

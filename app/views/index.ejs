@@ -17,17 +17,17 @@
         <div class="forms">
             <div class="form-login is-active"><!--inicio formulário aluno-->
                 <button type="button" class="botao botao-aluno">ALUNO<span class="linha"></span></button>
-                <form class="form aluno-login">
+                <form class="form aluno-login" action="/alunos/login" method="post">
                     <fieldset>
                         <legend>Por gentileza preencha todos os campos abaixo.</legend>
                         <div class="input-block">
                             <div class="aluno-img"></div>
                             <label for="RA">RA</label>
-                            <input id="RA" type="text" required>
+                            <input id="RA" type="text" name="ra_usuario"required>
                         </div>
                         <div class="input-block">
                             <label for="senha">Senha</label>
-                            <input id="senha" type="password" required>
+                            <input id="senha" type="password" name="senha_login" required>
                         </div>
                         <div class="cadastro_aluno">
                             <a id="cadastro" href="/tcadastro">

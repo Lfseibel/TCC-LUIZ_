@@ -3,43 +3,237 @@
 
 <head>
   <meta charset="utf-8">
-  <title>IFMS - Requerimento Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/entrada.css">
+  <title>Projeto de Requerimento Online</title>
+  <link rel="stylesheet" href="css/principal.css">
+  <script src="https://kit.fontawesome.com/4535967125.js"></script>
 </head>
 
 <body>
-  <nav>
-    <header class="nav-top">
-        <div class="top-itens">
-          <div class="logoif">
-            <img src="img/logoif.png" alt='some text' width=30px height=40px>
-          </div>
-          <h1 class="titulo">REQUERIMENTO ONLINE</h1>
-          <div class="busca">
-            <img class="lupa" src="img/lupa.png" alt='some text' width=19px height=19px>
-            <input type="search" id="busca_req" placeholder="Pesquise seu Requerimento">
-          </div>
-          <div class="perfil">
-          </div>
-        </div>
-    </header>
-  </nav>
-  <section>
-    <div class="corpo">
-      <div class="cxentradas">
-        <div class="btn is-active">
-          <button type="button" class="botao botao-def"><img src="https://img.icons8.com/cotton/44/000000/check-inbox.png"><h3>Deferidos</h3><span class="linha"></span></button>
-        </div>
-        <div class="btn">
-        <button type="button" class="botao botao-ind"><img src="https://img.icons8.com/cotton/44/000000/remove-from-inbox.png"><h3>Indeferidos</h3><span class="linha"></span></button>
-        </div>
-        <div class="novo">
-          <a href="/novo"><img src="img/novo.jpg" alt='some text' width=40px height=45px></a>
+  <header><!--estrutura do cabeçalho e dropdow de perfil-->
+    <h1 class="titulo">Requerimento Online</h1>
+    <input type="search" class="busca_req" placeholder="Pesquise seu Requerimento">
+    <div class="menu icon-profile">
+      <button class="menu-button"><img src="http://i.pravatar.cc/50"><span class="title">Carlos Eduardo</span></button>
+      <div class="menu-dropdown hidden">
+        <div class="content">
+          <ul>
+            <a href="/perfil"><li>Perfil do estudante</li></a>
+            <a href="/"><li>Sair</li></a>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </header>
+  <!--Término da estruturação do cabeçalho e dropdow de perfil-->
+
+  <!--Estrutura do menu deslizante-->
+  <nav class="menu-des">
+    <div class="icones">
+      <a class="icone active" data-container="new-requirement" href="#">
+        <i class="fas fa-plus fa-lg"></i>
+        Novo Requerimento
+      </a>
+      <a class="icone" data-container="deferred-requirements" href="#">
+        <i class="far fa-check-circle fa-lg"></i>
+        Requerimentos Deferidos
+      </a>
+      <a class="icone" data-container="rejected-requirements" href="#">
+        <i class="far fa-times-circle fa-lg"></i>
+        Requerimentos Indeferidos
+      </a>
+      <a class="icone" data-container="pending-requirements" href="#">
+        <i class="far fa-clock fa-lg"></i>
+        Requerimentos Pendentes
+      </a>
+    </div>
+  </nav>
+  <!--Término de estruturação do menu deslizante-->
+
+  <!--Estruturação do menu de navegação do usuário/estudante-->
+  <main>
+    <div class="new-requirement container">
+      <h1>Escolha o Motivo</h1>
+      <ul class="lista">
+        <li>
+          <a href="">
+            <img src="./img/historico.png" alt="">
+            <span>Histórico Escolar</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img src="./img/exame.png" alt="">
+            <span>Exame de Suficiência</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img src="./img/enriquecimento_escolar.png" alt="">
+            <span>Enriquecimento Escolar</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img src="./img/Declaraá∆o.png" alt="">
+            <span>Declaração</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img src="./img/Convalidaá∆o.png" alt="">
+            <span>Convalidação</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img src="./img/Certificado de Qualificaá∆o Profissional.png" alt="">
+            <span>Certificado de Qualificação Profissional</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img src="./img/Matr°cula em unidade curricular.png" alt="">
+            <span>Matricula em Unidade Curricular</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img src="./img/Mudanáa de turma.png" alt="">
+            <span>Mudança de Turno</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img src="./img/Mudanáa de turno.png" alt="">
+            <span>Mudança de Turma</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img src="./img/Segunda chamada.png" alt="">
+            <span>Segunda Chamada</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img src="./img/Outros.png" alt="">
+            <span>Outros</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="deferred-requirements container displayNone">
+        <h1>Documentos Deferidos</h1>
+      <ul class="documentos">
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rejected-requirements container displayNone">
+      <h1>Documentos Indeferidos</h1>
+    <ul class="documentos">
+      <li>
+        <a href="#">
+          <div class="document-req">
+            <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pending-requirements container displayNone">
+    <h1>Documentos Pendentes</h1>
+  <ul class="documentos">
+    <li>
+      <a href="#">
+        <div class="document-req">
+          <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+  
+  </main>
+  <!--Término da estruturação do menu-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/principal.js"></script>
 </body>
-<script src="js/main.js"></script>
+
 </html>

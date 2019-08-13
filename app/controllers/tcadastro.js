@@ -1,26 +1,57 @@
 module.exports.tcadastro = function(application, req, res) {
-	res.render("tcadastro",{validacao: {}, usuario : {}});
+	if (!req.session.loggedin) 
+	{
+		if (!req.session.loggedin1) 
+		{
+			res.render("tcadastro", {validacao: {}, ra: {}, senha: {}});
+		} 
+		else 
+		{
+			res.redirect('/servidor');
+		}
+	} 
+	else 
+	{
+		res.redirect('/entrada');
+	}
 }
 
 module.exports.salvar_Aluno = function(application, req, res){
 	const usuario = req.body;
-
-	req.assert('nome_usuario','Nome do estudante é obrigatorio').notEmpty();
-	req.assert('ra_usuario','RA deve conter 6 números').len(6);
-	req.assert('cpf_usuario','CPF deve conter 11 digitos').len(11);
+	req.assert('nome_usuario','Nome do usuário é obrigatorio').notEmpty();
+	req.assert('ra_usuario','RA deve conter 6 números').len(6,6);
+	req.assert('cpf_usuario','CPF deve conter 11 digitos').len(11,11);
 	req.assert('rg_usuario','RG deve conter entre 4 á 12 digitos').len(4,12);
 	req.assert('periodo_usuario','Período é obrigatorio').notEmpty();
-	req.assert('email_usuario','Email é obrigatorio').notEmpty();
-	req.assert('senha_usuario','Senha é obrigatoria').notEmpty();
 	const erros = req.validationErrors();
 	if (erros) {
 		res.render("tcadastro", {validacao : erros, usuario : usuario});
 		return;
 	}
-	const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-	const alunosModel = new application.app.models.AlunosDAO(connection);
-	
-	alunosModel.salvarAluno(usuario, function(error, result){
-		res.redirect('/');
-	});
+	const ra = usuario.ra_usuario; 
+	const cpf = usuario.cpf_usuario;
+	const rg = usuario.rg_usuario;
+	const email = usuario.email_usuario;
+	const nome = usuario.nome_usuario;
+	const periodo = usuario.periodo_usuario;
+	const senha = usuario.senha_usuario;
+	const csenha = usuario.csenha_usuario;
+	if (senha==csenha) 
+	{
+		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
+		const alunosModel = new application.app.models.AlunosDAO(connection);
+		alunosModel.verificarCadastro(ra, cpf, rg, email, function(error, result){
+			if (result.length > 0) {
+						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
+					} else {
+						alunosModel.salvarAluno(nome, ra, cpf, rg, periodo, email, senha, function(error, result){
+							res.redirect('/');
+					});	
+				}		
+		});
+	} 
+	else 
+	{
+		res.send('Senhas não batem');
+	}
 }

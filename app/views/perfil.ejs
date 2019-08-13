@@ -17,17 +17,17 @@
         </span>
       </div>
       <div class="nome">
-          <h3 id="nome_aluno">Nome Aluno</h3>
+          <h3 id="nome_aluno"><%= usuario[0].nome_usuario %></h3>
       </div>
       <div class="infos">
            <i class="fas fa-pencil-alt icon pen"><span class="text">Estudante no IFMS Campus Dourados</span></i>
           <i class="fas fa-calendar-alt icon calendar"><span class="date-nas text">05/11/2001</span></i>
-          <i class="fas fa-id-badge icon ra"><span class="ra text">14515</span></i>
+          <i class="fas fa-id-badge icon ra"><span class="ra text"><%= usuario[0].ra_usuario %></span></i>
       </div>
     </div>
   </main>
   <div class="logo">
-      <a href="principal.html"><img src="img/logo-ifms.png" alt='some text' width=50px height=66px></a>
+      <a href="/entrada"><img src="img/logo-ifms.png" alt='some text' width=50px height=66px></a>
     </div>
 </body>
 </html>

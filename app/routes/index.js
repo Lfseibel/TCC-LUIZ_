@@ -8,4 +8,9 @@ module.exports = function(application) {
 	{
 		application.app.controllers.index.login_Aluno(application, req, res);
 	});
+
+	application.post('/servidor/login', function(req, res) 
+	{
+		application.app.controllers.index.login_Servidor(application, req, res);
+	});
 }

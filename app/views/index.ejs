@@ -27,7 +27,7 @@
                         </div>
                         <div class="input-block">
                             <label for="senha">Senha</label>
-                            <input id="senha" type="password" name="senha_login" required>
+                            <input id="senha" type="password" name="senha_usuario" required>
                         </div>
                         <div class="cadastro_aluno">
                             <a id="cadastro" href="/tcadastro">
@@ -40,17 +40,17 @@
             </div> <!--término do formulário aluno-->
             <div class="form-login"> <!--inicio do formulário servidor-->
                 <button type="button" class="botao botao-servidor">SERVIDOR<span class="linha"></span></button>
-                <form class="form servidor-login">
+                <form class="form servidor-login" action="/servidor/login" method="post">
                     <fieldset>
                         <legend>Por gentileza preencha todos os campos abaixo.</legend>
                         <div class="input-block">
                             <div class="servidor-img"></div>
                             <label for="siape">Siape</label>
-                            <input id="siape" type="text" required>
+                            <input id="siape" type="text" name="siape_servidor" required>
                         </div>
                         <div class="input-block">
                             <label for="senha">Senha</label>
-                            <input id="senha" type="password" required>
+                            <input id="senha" type="password" name="senha_servidor" required>
                         </div>
                     </fieldset>
                     <button type="submit" class="btn-login-servidor">Login</button>

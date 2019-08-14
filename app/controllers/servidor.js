@@ -29,8 +29,6 @@ module.exports.salvar_Servidor = function(application, req, res){
 	const servidor = req.body;
 	req.assert('nome_servidor','Nome do servidor é obrigatorio').notEmpty();
 	req.assert('siape_servidor','SIAPE deve conter 6 números').len(6,6);
-	req.assert('senha_servidor','Senha é obrigatoria').notEmpty();
-	req.assert('csenha_servidor','Confirme sua senha').notEmpty();
 	const erros = req.validationErrors();
 	if (erros) {
 		res.render("servidor", {validacao : erros, servidor : servidor});
@@ -42,7 +40,7 @@ module.exports.salvar_Servidor = function(application, req, res){
 	const csenha = servidor.csenha_servidor;
 	if (senha==csenha) {
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-		const servidoresModel = new application.app.models.AlunosDAO(connection);
+		const servidoresModel = new application.app.models.ServidoresDAO(connection);
 		servidoresModel.verificarCadastro(siape, function(error, result){
 			if (result.length > 0) {
 						res.send('Já existe um servidor com esta SIAPE cadastrado');

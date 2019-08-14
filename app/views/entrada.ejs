@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projeto de Requerimento Online</title>
-  <link rel="stylesheet" href="css/principal.css">
   <script src="https://kit.fontawesome.com/4535967125.js"></script>
+  <link rel="stylesheet" href="css/tela_do_aluno.css">
 </head>
 
 <body>
@@ -56,76 +56,82 @@
 
   <!--Estruturação do menu de navegação do usuário/estudante-->
   <main>
-    <div class="new-requirement container">
-      <h1>Escolha o Motivo</h1>
-      <ul class="lista">
-        <li>
-          <a href="">
+    <div id= "modal_alert" class="new-requirement container">
+      <ul class="lista" id="detalhe_pedido">
+        <li id="Histórico">
+          <a>
             <img src="./img/historico.png" alt="">
-            <span>Histórico Escolar</span>
+            <span >Histórico Escolar</span>
           </a>
         </li>
-        <li>
-          <a href="">
+        <li id="Exame">
+          <a>
             <img src="./img/exame.png" alt="">
             <span>Exame de Suficiência</span>
           </a>
         </li>
         <li>
-          <a href="">
+          <a>
             <img src="./img/enriquecimento_escolar.png" alt="">
             <span>Enriquecimento Escolar</span>
           </a>
         </li>
         <li>
-          <a href="">
-            <img src="./img/Declaraá∆o.png" alt="">
+          <a>
+            <img src="./img/declaracao.png" alt="">
             <span>Declaração</span>
           </a>
         </li>
         <li>
-          <a href="">
-            <img src="./img/Convalidaá∆o.png" alt="">
+          <a>
+            <img src="./img/convalidacao.png" alt="">
             <span>Convalidação</span>
           </a>
         </li>
         <li>
-          <a href="">
-            <img src="./img/Certificado de Qualificaá∆o Profissional.png" alt="">
+          <a>
+            <img src="./img/certificado.png" alt="">
             <span>Certificado de Qualificação Profissional</span>
           </a>
         </li>
 
         <li>
-          <a href="">
-            <img src="./img/Matr°cula em unidade curricular.png" alt="">
+          <a>
+            <img src="./img/matricula.png" alt="">
             <span>Matricula em Unidade Curricular</span>
           </a>
         </li>
 
         <li>
-          <a href="">
-            <img src="./img/Mudanáa de turma.png" alt="">
+          <a>
+            <img src="./img/mudanca_de_turno.png" alt="">
             <span>Mudança de Turno</span>
           </a>
         </li>
 
         <li>
-          <a href="">
-            <img src="./img/Mudanáa de turno.png" alt="">
+          <a>
+            <img src="./img/mudanca_de_turma.png" alt="">
             <span>Mudança de Turma</span>
           </a>
         </li>
 
         <li>
-          <a href="">
+          <a>
             <img src="./img/Segunda chamada.png" alt="">
             <span>Segunda Chamada</span>
           </a>
         </li>
 
         <li>
-          <a href="">
+          <a>
+            <img src="./img/cracha.png" alt="">
+            <span>Segunda Via de Crachá</span>
+          </a>
+        </li>
+
+        <li>
+          <a>
             <img src="./img/Outros.png" alt="">
             <span>Outros</span>
           </a>
@@ -238,6 +244,9 @@
   <!--Término da estruturação do menu-->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="js/principal.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>

@@ -37,15 +37,6 @@ app.use(session({
 }));
 
 
-/*const redirectLogin = (req, res, next) => {
-	if (!req.session.loggedin) 
-	{
-		res.redirect('/login');
-	} else
-	{
-		next();
-	}
-}*/
 /* configurar o middleware body-parser*/
 app.use(bodyParser.urlencoded({extended: true}));
 

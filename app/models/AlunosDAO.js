@@ -14,7 +14,11 @@ AlunosDAO.prototype.verificarCadastro = function(ra, cpf, rg, email, callback){
 	this._connection.query('select * from usuario where ra_usuario = ? AND cpf_usuario = ? AND rg_usuario = ? AND email_usuario = ?', [ra,cpf,rg,email], callback);
 }
 
-AlunosDAO.prototype.pegarNome = function(vnome, callback){
+AlunosDAO.prototype.coisasAluno = function(vnome, callback){
+	this._connection.query('select * from usuario where ra_usuario = ? ', vnome, callback);
+}
+
+AlunosDAO.prototype.dadosAluno = function(vnome, callback){
 	this._connection.query('select * from usuario where ra_usuario = ? ', vnome, callback);
 }
 

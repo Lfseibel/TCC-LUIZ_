@@ -3,7 +3,7 @@ module.exports.entrada = function(application, req, res) {
 		const vnome = req.session.ra;
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.pegarNome(vnome, function(error, result)
+		alunosModel.coisasAluno(vnome, function(error, result)
 		{
 			res.render("entrada", {usuario: result});
 		});		

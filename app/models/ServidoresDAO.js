@@ -3,7 +3,7 @@ function ServidoresDAO(connection){//classe com objetivo de acesso a dados data 
 }
 
 ServidoresDAO.prototype.salvarServidor = function(servidor, callback){
-	this._connection.query('insert into servidor set ? ', servidor, callback);//jason na funcao query e inseri quando acha o ?
+	this._connection.query('insert into servidor set nome_servidor = ?,siape_servidor = ?,cpf_usuario = ?,rg_usuario = ?,periodo_usuario = ?,email_usuario = ?,senha_usuario = ?', [nome, ra, cpf, rg, periodo, email, senha], callback);//jason na funcao query e inseri quando acha o ?
 }
 
 ServidoresDAO.prototype.loginServidor = function(siape, senha1, callback){

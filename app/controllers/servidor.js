@@ -43,13 +43,13 @@ module.exports.salvar_Servidor = function(application, req, res){
 	if (senha==csenha) {
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const servidoresModel = new application.app.models.AlunosDAO(connection);
-		servidoresModel.verificarCadastro(ra, cpf, rg, email, function(error, result){
+		servidoresModel.verificarCadastro(siape, function(error, result){
 			if (result.length > 0) {
 						res.send('Já existe um servidor com esta SIAPE cadastrado');
 					} 
 					else 
 					{
-						servidoresModel.salvarServidor(usuario, function(error, result){
+						servidoresModel.salvarServidor(nome, siape, senha, function(error, result){
 							res.redirect('/');
 					});	
 				}		

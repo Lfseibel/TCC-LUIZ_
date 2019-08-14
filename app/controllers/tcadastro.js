@@ -44,7 +44,7 @@ module.exports.salvar_Aluno = function(application, req, res){
 			if (result.length > 0) {
 						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
 					} else {
-						alunosModel.salvarAluno(nome, ra, cpf, rg, periodo, email, senha, function(error, result){
+						alunosModel.salvarAluno(ra, cpf, rg, email, nome, periodo, senha, function(error, result){
 							res.redirect('/');
 					});	
 				}		

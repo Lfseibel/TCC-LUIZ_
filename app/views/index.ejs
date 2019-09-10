@@ -13,7 +13,7 @@
             <h1>REQUERIMENTO ONLINE</h1>
     </div>
  
-    <section class="formulario"> <!--criação dos formulários-->
+    <section class="formulario desktop"> <!--criação dos formulários-->
         <div class="forms">
             <div class="form-login is-active"><!--inicio formulário aluno-->
                 <button type="button" class="botao botao-aluno">ALUNO<span class="linha"></span></button>
@@ -57,6 +57,53 @@
                 </form>
             </div><!--término do formulário servidor-->
         </div>
+    </section>
+    <section class="formulario-resp mobile">
+        <div class="forms-mobile">
+            <form class="form-mobile aluno-mobile " action="/alunos/login" method="post">
+                <button type="button" class="botao-mobile botao_servidor">
+                    <img class="icon-troca" src="../Projeto-de-requerimento-online/img/troca.png" alt="icon-aluno">
+                </button>
+            <fieldset>
+                 <h1 class="titulo-aluno">Aluno</h1>
+                <legend>Por gentileza preencha todos os campos abaixo.</legend>
+                <div class="input_block">
+                    <div class="aluno-img"></div>
+                        <label for="RA">RA</label>
+                        <input id="RA" type="text" name="ra_usuario" required>
+                    </div>
+
+                    <div class="input_block">
+                        <label for="senha">Senha</label>
+                         <input id="senha" type="password" name="senha_usuario" required>
+                    </div>
+                    <button type="submit" class="btn-login-mobile">Login</button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="forms-mobile">
+                <form class="form-mobile servidor-mobile  no-active" action="/servidor/login" method="post">
+                <button type="button" class="botao-mobile botao_aluno">
+                    <img class="icon-troca" src="../Projeto-de-requerimento-online/img/troca.png" alt="icon-servidor">
+                </button>
+                <fieldset>
+                    <h1 class="titulo-aluno">Servidor</h1>
+                    <legend>Por gentileza preencha todos os campos abaixo.</legend>
+                    <div class="input_block">
+                        <div class="servidor-img"></div>
+                            <label for="siape">Siape</label>
+                            <input id="siape" type="text" name="siape_servidor" required>
+                        </div>
+    
+                        <div class="input_block">
+                            <label for="senha">Senha</label>
+                             <input id="senha" type="password" name="senha_servidor" required>
+                        </div>
+                        <button type="submit" class="btn-login-mobile">Login</button>
+                    </fieldset>
+                </form>
+            </div>
     </section>  
 </body>
 <script src="js/plugins.js"></script>

@@ -1,8 +1,7 @@
 /* importar o modulo do framework express*/
 const express = require('express');
 
-/*importar o modulo do sweetalert*/
-const Swal = require('sweetalert');
+const bcrypt = require('bcrypt');
 
 /*importar o modulo do express-session*/
 const session = require('express-session');

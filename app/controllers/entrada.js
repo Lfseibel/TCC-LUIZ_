@@ -23,3 +23,7 @@ module.exports.logout_Aluno = function(application, req, res){
 		res.redirect('/');
 		})
 }
+
+module.exports.enviar = function(application, req, res){
+	console.log(requerimento);
+}

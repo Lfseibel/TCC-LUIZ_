@@ -1,4 +1,4 @@
-$(document).on('click', '.icone', function(){
+ $(document).on('click', '.icone', function(){
     $(this).addClass('active').siblings().removeClass('active')
 })
 
@@ -52,6 +52,11 @@ document.querySelector('.icones').addEventListener('click', function(event){
       'vespertino': 'Vespertino',
       'noturno': 'Noturno',
      },
+     inputValidator: (value) => {
+      if (!value) {
+        return 'Informe seu turno para continuar!'
+      }
+    },
   },
   {
     title: 'Informe seu período',
@@ -64,6 +69,11 @@ document.querySelector('.icones').addEventListener('click', function(event){
       '5° semestre': '5° Semestre',
       '6° semestre': '6° Semestre',
      },
+     inputValidator: (value) => {
+      if (!value) {
+        return 'Informe seu período para continuar!'
+      }
+    },
   },
   {
     title: 'Informe sua turma',
@@ -74,11 +84,25 @@ document.querySelector('.icones').addEventListener('click', function(event){
       'turma c': 'Turma C',
       'turma d': 'Turma D',
      },
+     inputValidator: (value) => {
+      if (!value) {
+        return 'Informe sua turma para continuar!'
+      }
+    },
   },
   {
     title: 'Detalhe seu pedido',
     input: 'textarea',
-    inputPlaceholder:'Digite aqui'
+    inputPlaceholder:'Digite aqui (Opcional)'
+  },
+  {
+    title: 'Escolha seu arquivo',
+    input: 'file',
+    inputAttributes: {
+      accept: '/*',
+    'aria-label': 'Upload your profile picture',
+      
+    }
   },
   {
     title: 'Deseja enviar o requerimento?',
@@ -92,24 +116,30 @@ document.querySelector('.icones').addEventListener('click', function(event){
 ])
 .then((result) => {
   if (result.value) {
-    Swal.fire(
-      'Sucesso!',
-      'Seu requerimento foi enviado com sucesso!',
-      'success',
-    )
-  } else if (
-    // Read more about handling dismissals
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    Swal.fire(
+    const requerimento = JSON.stringify(result.value);
+    $.post("/alunos/enviar", requerimento, function(res){
+      if (res.status == true) {
+        Swal.fire(
+        'Sucesso!',
+        'Seu requerimento foi enviado com sucesso!',
+        'success',
+        )
+      } else {
+        Swal.fire(
       'Cancelado',
       'Seu requerimento foi cancelado :)',
       'error'
     )
+      }
+    })
+    
   }
 })
  });
 
  
+
+  
+
 
   

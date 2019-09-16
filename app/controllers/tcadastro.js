@@ -22,7 +22,6 @@ module.exports.salvar_Aluno = function(application, req, res){
 	req.assert('ra_usuario','RA deve conter 6 números').len(6,6);
 	req.assert('cpf_usuario','CPF deve conter 11 digitos').len(11,11);
 	req.assert('rg_usuario','RG deve conter entre 4 á 12 digitos').len(4,12);
-	req.assert('periodo_usuario','Período é obrigatorio').notEmpty();
 	const erros = req.validationErrors();
 	if (erros) {
 		res.render("tcadastro", {validacao : erros, usuario : usuario});
@@ -33,7 +32,6 @@ module.exports.salvar_Aluno = function(application, req, res){
 	const rg = usuario.rg_usuario;
 	const email = usuario.email_usuario;
 	const nome = usuario.nome_usuario;
-	const periodo = usuario.periodo_usuario;
 	const senha = usuario.senha_usuario;
 	const csenha = usuario.csenha_usuario;
 	if (senha==csenha) 
@@ -44,7 +42,7 @@ module.exports.salvar_Aluno = function(application, req, res){
 			if (result.length > 0) {
 						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
 					} else {
-						alunosModel.salvarAluno(ra, cpf, rg, email, nome, periodo, senha, function(error, result){
+						alunosModel.salvarAluno(ra, cpf, rg, email, nome, senha, function(error, result){
 							res.redirect('/');
 					});	
 				}		

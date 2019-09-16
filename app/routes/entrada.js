@@ -3,7 +3,7 @@ module.exports = function(application) {
 	{
 		application.app.controllers.entrada.entrada(application, req, res);
 	});
-	application.post('/alunos/sair', function(req, res) 
+	application.get('/sair', function(req, res) 
 	{
 		application.app.controllers.entrada.logout_Aluno(application, req, res);
 	});

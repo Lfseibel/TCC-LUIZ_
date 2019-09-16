@@ -1,13 +1,13 @@
 module.exports.servidor = function(application, req, res) {
 	if (req.session.loggedin1) {
 		const vsiape = req.session.siape;
-		res.render("servidor");
+		res.render("servidor"); 
 		/*const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.pegarNome(vnome, function(error, result)
+		const servidoresModel = new application.app.models.ServidoresDAO(connection);
+		servidoresModel.pegarNome(vsiape, function(error, result)
 		{
-			res.render("entrada", {usuario: result});
-		});		*/
+			res.render("entrada", {servidor: result});
+		});*/		
 	} 
 	else 
 	{
@@ -18,7 +18,7 @@ module.exports.servidor = function(application, req, res) {
 module.exports.logout_Servidor = function(application, req, res){
 	req.session.destroy(err =>{ 
 		if (err) {
-			return res.redirect('/entrada');
+			return res.redirect('/servidor');
 		}
 
 		res.redirect('/');
@@ -38,6 +38,8 @@ module.exports.salvar_Servidor = function(application, req, res){
 	const siape = servidor.siape_servidor;
 	const senha = servidor.senha_servidor;
 	const csenha = servidor.csenha_servidor;
+	const bcrypt = require('bcrypt');
+	const saltRounds = 10;
 	if (senha==csenha) {
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const servidoresModel = new application.app.models.ServidoresDAO(connection);
@@ -47,9 +49,12 @@ module.exports.salvar_Servidor = function(application, req, res){
 					} 
 					else 
 					{
-						servidoresModel.salvarServidor(nome, siape, senha, function(error, result){
-							res.redirect('/');
-					});	
+						bcrypt.hash(senha, saltRounds, function(err, hash){
+							servidoresModel.salvarServidor(nome, siape, hash, function(error, result){
+								res.redirect('/servidor');
+						});	
+						});	
+						
 				}		
 		});
 	}

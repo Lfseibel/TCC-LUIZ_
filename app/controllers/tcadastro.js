@@ -34,6 +34,9 @@ module.exports.salvar_Aluno = function(application, req, res){
 	const nome = usuario.nome_usuario;
 	const senha = usuario.senha_usuario;
 	const csenha = usuario.csenha_usuario;
+	/* importar o modulo do bcrypt*/
+	const bcrypt = require('bcrypt');
+	const saltRounds = 10;
 	if (senha==csenha) 
 	{
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
@@ -42,9 +45,11 @@ module.exports.salvar_Aluno = function(application, req, res){
 			if (result.length > 0) {
 						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
 					} else {
-						alunosModel.salvarAluno(ra, cpf, rg, email, nome, senha, function(error, result){
-							res.redirect('/');
-					});	
+						bcrypt.hash(senha, saltRounds, function(err, hash){
+							alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function(error, result){
+								res.redirect('/');
+							});	
+						});		
 				}		
 		});
 	} 

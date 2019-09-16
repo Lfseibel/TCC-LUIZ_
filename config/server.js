@@ -1,8 +1,6 @@
 /* importar o modulo do framework express*/
 const express = require('express');
 
-const bcrypt = require('bcrypt');
-
 /*importar o modulo do express-session*/
 const session = require('express-session');
 

@@ -25,5 +25,6 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
+	res.send('até aqui foi');
 	console.log(requerimento);
 }

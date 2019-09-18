@@ -1,15 +1,190 @@
-<form class="form" action="/servidor/salvar" method="post">
-      <div>
-        <input type="text" placeholder="Nome Completo" class="form_input" id="nome" name="nome_servidor">
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeto de Requerimento Online</title>
+  <script src="https://kit.fontawesome.com/4535967125.js"></script>
+  <link rel="stylesheet" href="css/tela_servidor.css">
+</head>
+
+<body>
+  <header><!--estrutura do cabeçalho e dropdow de perfil-->
+     <h1 class="titulo">Requerimento Online</h1>
+    <input type="search" class="busca_req" placeholder= "Pesquise seu Requerimento">
+    <div class="menu icon-profile">
+      <button class="menu-button"><img src="http://i.pravatar.cc/50"><span class="title"><%= servidor[0].nome_servidor %></span></button>
+      <div class="menu-dropdown hidden">
+        <div class="content">
+          <ul>
+            <a href="/perfilservidor"><li>Perfil do Servidor</li></a>
+            <a href="/tcadastroservidor"><li>Adicionar Servidor</li></a>
+            <a href="/sair"><li>Sair</li></a>
+          </ul>
+        </div>
       </div>
-      <div>
-        <input type="text" placeholder="SIAPE" class="form_input" id="siape" name="siape_servidor">
-      </div>
-      <div>
-        <input type="password" placeholder="Senha" class="form_input" id="senha" name="senha_servidor" required>
-      </div>
-      <div>
-        <input type="password" placeholder="Confirme sua senha" class="form_input" id="csenha_senha" name="csenha_servidor" required>
-      </div>
-      <button class="btn" type="submit">CADASTRAR NOVO SERVIDOR</button>
-</form>
+    </div>
+  </header>
+  <!--Término da estruturação do cabeçalho e dropdow de perfil-->
+
+  <!--Estrutura do menu deslizante-->
+  <nav class="menu-des">
+    <div class="icones">
+      <a class="icone active" data-container="caixa_entrada">
+        <i class="far fa-envelope fa-lg"></i>
+        Caixa de Entrada
+      </a>
+      <a class="icone" data-container="deferred-requirements">
+        <i class="far fa-check-circle fa-lg"></i>
+        Requerimentos Deferidos
+      </a>
+      <a class="icone" data-container="rejected-requirements">
+        <i class="far fa-times-circle fa-lg"></i>
+        Requerimentos Indeferidos
+      </a>
+    </div>
+  </nav>
+  <!--Término de estruturação do menu deslizante-->
+
+  <!--Estruturação do menu de navegação do usuário/estudante-->
+  <main>
+    <div class="caixa_entrada container">
+       <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Motivo</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox">Carlos Eduardo Mascarenhas Oliveira</td>
+                    <td>Mudança de turno</td>
+                    <td>19 de ago</td>
+                </tr>
+                <tr class="active-row">
+                    <td><input type="checkbox">Felipe Souza</td>
+                    <td>Mudança de turma</td>
+                    <td>20 de ago</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox">Luiz Seibel</td>
+                    <td>Outros</td>
+                    <td>15 de nov</td>
+                </tr>
+                <tr class="active-row">
+                    <td><input type="checkbox">Sergio Ricardo</td>
+                    <td>Segunda via de crachá</td>
+                    <td>20 de out</td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+
+
+    <div class="deferred-requirements container displayNone">
+      <ul class="documentos">
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+                <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="rejected-requirements container displayNone">
+    <ul class="documentos">
+      <li>
+        <a href="#">
+          <div class="document-req">
+            <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="document-req">
+              <div class="linha-rej"></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pending-requirements container displayNone">
+  <ul class="documentos">
+    <li>
+      <a href="#">
+        <div class="document-req">
+          <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <div class="document-req">
+            <div class="linha-pen"></div>
+        </div>
+      </a>
+      </li>
+     </ul>
+    </div>
+  </main>
+  <!--Término da estruturação do menu-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/tela_servidor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</body>
+</html>

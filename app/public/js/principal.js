@@ -36,7 +36,7 @@ document.querySelector('.icones').addEventListener('click', function(event){
         var id = $(this).attr('id');
        // alert(id);
      
-  document.getElementById("modal").innerHTML = Swal.mixin({
+ Swal.mixin({
   inputPlaceholder: 'Escolha a opção',
   confirmButtonText: 'Próximo',
   cancelButtonText: 'Cancelar',
@@ -46,6 +46,7 @@ document.querySelector('.icones').addEventListener('click', function(event){
 }).queue([
   {
     title: 'Informe seu turno',
+    name: 'turno',
     input: 'select',
     inputOptions: {
       'matutino': 'Matutino',
@@ -117,23 +118,22 @@ document.querySelector('.icones').addEventListener('click', function(event){
 .then((result) => {
   if (result.value) {
     const requerimento = JSON.stringify(result.value);
+    alert(requerimento);
     $.post("/alunos/enviar", requerimento, function(res){
-      if (res.status == true) {
         Swal.fire(
         'Sucesso!',
         'Seu requerimento foi enviado com sucesso!',
         'success',
         )
-      } else {
+    })
+  }
+  else {
         Swal.fire(
       'Cancelado',
       'Seu requerimento foi cancelado :)',
       'error'
     )
       }
-    })
-    
-  }
 })
  });
 

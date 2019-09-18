@@ -31,7 +31,8 @@ module.exports.login_Aluno = function(application, req, res){
 				res.redirect('/entrada');
 			} else {
 				res.render('index', { erro: 'Senha ou usuário incorretos'});
-			}		
+			}	
+				
 		});
 				
 	});

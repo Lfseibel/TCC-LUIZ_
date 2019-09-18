@@ -4,8 +4,8 @@ module.exports = function(application) {
 		application.app.controllers.servidor.servidor(application, req, res);
 	});
 
-	application.post('/servidor/salvar', function(req, res) 
+	application.get('/sair', function(req, res) 
 	{
-		application.app.controllers.servidor.salvar_Servidor(application, req, res);
+		application.app.controllers.servidor.logout_Servidor(application, req, res);
 	});
 }

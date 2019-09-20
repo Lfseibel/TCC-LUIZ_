@@ -133,8 +133,11 @@ showCloseButton: true,
 ])
 .then((result) => {
   if (result.value) {
-    const requerimento = JSON.stringify(result.value);
-    $.post("/alunos/enviar", requerimento, function(res){
+    const requerimento = result.value;
+    alert(requerimento);
+    const enviar = {requerimento};
+    alert(enviar);
+    $.post("/alunos/enviar", enviar, function(res){
         Swal.fire(
         'Sucesso!',
         'Seu requerimento foi enviado com sucesso!',

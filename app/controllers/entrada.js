@@ -25,9 +25,11 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
-	const requerimento = req.body;
+	const requerimento = JSON.stringify(req.body);
+	console.log(requerimento);
+
 	for(var i = 0; i < requerimento.length; i++){
-		console.log(requerimento[i]);
+	
 	}
 	res.redirect('/entrada');
 }

@@ -18,6 +18,7 @@ module.exports.tcadastro = function(application, req, res) {
 
 module.exports.salvar_Aluno = function(application, req, res){
 	const usuario = req.body;
+	console.log(usuario);
 	req.assert('nome_usuario','Nome do usuário é obrigatorio').notEmpty();
 	req.assert('ra_usuario','RA deve conter 6 números').len(6,6);
 	req.assert('cpf_usuario','CPF deve conter 11 digitos').len(11,11);

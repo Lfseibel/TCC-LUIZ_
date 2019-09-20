@@ -25,12 +25,9 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
-	console.log(req.body);
-	const vnome = req.session.ra;
-		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.coisasAluno(vnome, function(error, result)
-		{
-			res.render("entrada", {usuario: result});
-		});
+	const requerimento = req.body;
+	for(var i = 0; i < requerimento.length; i++){
+		console.log(requerimento[i]);
+	}
+	res.redirect('/entrada');
 }

@@ -7,7 +7,7 @@ AlunosDAO.prototype.salvarAluno = function(ra, cpf, rg, email, nome, hash, callb
 }
 
 AlunosDAO.prototype.loginAluno = function(ra, callback){
-	this._connection.query('select senha_usuario from usuario where ra_usuario = ? ', ra, callback);
+	this._connection.query('select * from usuario where ra_usuario = ? ', ra, callback);
 }
 
 AlunosDAO.prototype.verificarCadastro = function(ra, cpf, rg, email, callback){

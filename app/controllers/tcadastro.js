@@ -35,27 +35,41 @@ module.exports.salvar_Aluno = function(application, req, res){
 	const nome = usuario.nome_usuario;
 	const senha = usuario.senha_usuario;
 	const csenha = usuario.csenha_usuario;
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000
+	});
 	/* importar o modulo do bcrypt*/
 	const bcrypt = require('bcrypt');
 	const saltRounds = 10;
-	if (senha==csenha) 
-	{
+	if (senha == csenha) {
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.verificarCadastro(ra, cpf, rg, email, function(error, result){
+		alunosModel.verificarCadastro(ra, cpf, rg, email, function (error, result) {
 			if (result.length > 0) {
-						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
-					} else {
-						bcrypt.hash(senha, saltRounds, function(err, hash){
-							alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function(error, result){
-								res.redirect('/');
-							});	
-						});		
-				}		
+				Toast.fire({
+					type: 'error',
+					title: 'Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado'
+				})
+			} else {
+				bcrypt.hash(senha, saltRounds, function (err, hash) {
+					alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function (error, result) {
+						Toast.fire({
+							type: 'success',
+							title: 'Cadastro Realizado'
+						})
+						res.redirect('/');
+					});
+				});
+			}
 		});
-	} 
-	else 
-	{
-		res.send('Senhas não batem');
+	}
+	else {
+		Toast.fire({
+			type: 'error',
+			title: 'As senhas não batem',
+		});
 	}
 }

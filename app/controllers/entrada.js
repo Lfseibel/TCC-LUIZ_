@@ -25,11 +25,15 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
-	const requerimento = JSON.stringify(req.body);
-	console.log(requerimento);
-
-	for(var i = 0; i < requerimento.length; i++){
-	
-	}
-	res.redirect('/entrada');
+	const curso = req.body.value[0];
+	const periodo = req.body.value[1];
+	const semestre = req.body.value[2];
+	const turma = req.body.value[3];
+	const descricao = req.body.value[4];
+	//const arquivo = req.body.value[5];
+	// const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
+	// const alunosModel = new application.app.models.AlunosDAO(connection);
+	// alunosModel.salvarRequerimento(ra, cpf, rg, email, nome, hash, function(error, result){														
+	// });	
+	res.redirect('/entrada');	
 }

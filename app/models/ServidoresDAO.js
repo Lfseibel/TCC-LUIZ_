@@ -14,8 +14,8 @@ ServidoresDAO.prototype.verificarCadastro = function(siape, callback){
 	this._connection.query('select * from servidor where siape_servidor = ?', [siape], callback);
 }
 
-ServidoresDAO.prototype.pegarNome = function(vsiape, callback){
-	this._connection.query('select * from servidor where siape_servidor = ? ', vsiape, callback);
+ServidoresDAO.prototype.dadosServidor = function(vnome, callback){
+	this._connection.query('select * from usuario where ra_usuario = ? ', vnome, callback);
 }
 
 ServidoresDAO.prototype.mostrarRequerimentos = function(callback){

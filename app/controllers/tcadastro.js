@@ -35,6 +35,12 @@ module.exports.salvar_Aluno = function(application, req, res){
 	const nome = usuario.nome_usuario;
 	const senha = usuario.senha_usuario;
 	const csenha = usuario.csenha_usuario;
+	const Swal = require('sweetalert2');
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		timer: 3000
+	});
 	/* importar o modulo do bcrypt*/
 	const bcrypt = require('bcrypt');
 	const saltRounds = 10;
@@ -44,11 +50,18 @@ module.exports.salvar_Aluno = function(application, req, res){
 		const alunosModel = new application.app.models.AlunosDAO(connection);
 		alunosModel.verificarCadastro(ra, cpf, rg, email, function(error, result){
 			if (result.length > 0) {
-						res.send('Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado');
+							Toast.fire({
+								type: 'error',
+								title: 'Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado'
+							});
+							console.log('erro1');
 					} else {
 						bcrypt.hash(senha, saltRounds, function(err, hash){
-							alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function(error, result){
-								res.redirect('/');
+							alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function(error, result){													
+								Toast.fire({
+									type: 'success',
+									title: 'Cadastro Realizado'
+								});
 							});	
 						});		
 				}		
@@ -56,6 +69,10 @@ module.exports.salvar_Aluno = function(application, req, res){
 	} 
 	else 
 	{
-		res.send('Senhas não batem');
+		Toast.fire({
+			type: 'error',
+			title: 'Senhas não batem'
+		});
+		console.log('erro2');
 	}
 }

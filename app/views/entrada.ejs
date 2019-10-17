@@ -6,15 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projeto de Requerimento Online</title>
   <script src="https://kit.fontawesome.com/4535967125.js"></script>
-  <link rel="stylesheet" href="/css/tela_do_aluno.css">
+  <link rel="stylesheet" href="css/tela_do_aluno.css">
 </head>
 
 <body>
-
-  <header><!--estrutura do cabeçalho e dropdow de perfil-->
+  <header>
+    <!--estrutura do cabeçalho e dropdow de perfil-->
     <h1 class="titulo">Requerimento Online</h1>
-    <input type="search" class="busca_req" placeholder="Pesquise seu Requerimento">
-    <div class="menu icon-profile">    
+    <div class="menu icon-profile">
       <button class="menu-button"><img src="http://i.pravatar.cc/50"><span class="title"><%= usuario[0].nome_usuario %></span></button>
       <div class="menu-dropdown hidden">
         <div class="content">
@@ -26,25 +25,24 @@
       </div>
     </div>
   </header>
-
   <!--Término da estruturação do cabeçalho e dropdow de perfil-->
 
   <!--Estrutura do menu deslizante-->
   <nav class="menu-des">
     <div class="icones">
-      <a class="icone active" data-container="new-requirement" href="#">
+      <a class="icone active" data-container="new-requirement">
         <i class="fas fa-plus fa-lg"></i>
         Novo Requerimento
       </a>
-      <a class="icone" data-container="deferred-requirements" href="#">
+      <a class="icone" data-container="deferred-requirements">
         <i class="far fa-check-circle fa-lg"></i>
         Requerimentos Deferidos
       </a>
-      <a class="icone" data-container="rejected-requirements" href="#">
+      <a class="icone" data-container="rejected-requirements">
         <i class="far fa-times-circle fa-lg"></i>
         Requerimentos Indeferidos
       </a>
-      <a class="icone" data-container="pending-requirements" href="#">
+      <a class="icone" data-container="pending-requirements">
         <i class="far fa-clock fa-lg"></i>
         Requerimentos Pendentes
       </a>
@@ -54,15 +52,16 @@
 
   <!--Estruturação do menu de navegação do usuário/estudante-->
   <main>
+
     <div class="new-requirement container">
-      <ul class="lista" id="detalhe_pedido">
-        <li id="Histórico">
+      <ul class="lista">
+        <li>
           <a>
             <img src="./img/historico.png" alt="">
-            <span >Histórico Escolar</span>
+            <span>Histórico Escolar</span>
           </a>
         </li>
-        <li id="Exame">
+        <li>
           <a>
             <img src="./img/exame.png" alt="">
             <span>Exame de Suficiência</span>
@@ -137,7 +136,6 @@
       </ul>
     </div>
     <div class="deferred-requirements container displayNone">
-        <h1>Documentos Deferidos</h1>
       <ul class="documentos">
         <li>
           <a href="#">
@@ -149,101 +147,99 @@
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
             </div>
           </a>
         </li>
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
             </div>
           </a>
         </li>
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="rejected-requirements container displayNone">
+      <ul class="documentos">
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-rej"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-rej"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-rej"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-rej"></div>
             </div>
           </a>
         </li>
       </ul>
     </div>
 
-    <div class="rejected-requirements container displayNone">
-      <h1>Documentos Indeferidos</h1>
-    <ul class="documentos">
-      <li>
-        <a href="#">
-          <div class="document-req">
-            <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
-              <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
-              <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
-              <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="pending-requirements container displayNone">
-    <h1>Documentos Pendentes</h1>
-  <ul class="documentos">
-    <li>
-      <a href="#">
-        <div class="document-req">
-          <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-  </ul>
-</div>
-  
+    <div class="pending-requirements container displayNone">
+      <ul class="documentos">
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-pen"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-pen"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-pen"></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-pen"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </main>
   <!--Término da estruturação do menu-->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="js/principal.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>

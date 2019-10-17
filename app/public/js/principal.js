@@ -108,21 +108,13 @@ $('.lista li').click(function () {
       },
     },
     {
-      title: 'Select image',
+      title: 'Escolha seu arquivo',
       input: 'file',
       inputAttributes: {
-        'accept': 'image/*',
-        'aria-label': 'Upload your profile picture'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Upload',
-      showLoaderOnConfirm: true,
-      preConfirm: async (file) => {
-        if (file) {
-          return await readUploadedFile(file)
-        }
-      },
-      allowOutsideClick: () => !swal.isLoading()
+        accept: '/*',
+      'aria-label': 'Upload your profile picture',
+        
+      }
     },
     {
       title: 'Deseja enviar o requerimento?',
@@ -137,6 +129,7 @@ $('.lista li').click(function () {
   ])
     .then((result) => {
       if (result.value) {
+        alert(result.value[5].name);
         $.post("/alunos/enviar", result, function (res) {
           Swal.fire(
             'Sucesso!',
@@ -154,19 +147,4 @@ $('.lista li').click(function () {
       }
     })
 });
-// Função que recebe a imagem da input
-const readUploadedFile = (inputFile) => {
-  const reader = new FileReader();
 
-  return new Promise((resolve, reject) => {
-    reader.onerror = () => {
-      reader.abort();
-      reject(new DOMException("Problem parsing input file."));
-    };
-
-    reader.onload = (e) => {
-      resolve(e.target.result);
-    };
-    reader.readAsDataURL(inputFile);
-  });
-};

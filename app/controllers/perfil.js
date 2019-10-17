@@ -17,7 +17,7 @@ module.exports.perfilservidor = function(application, req, res) {
 		const vnome = req.session.siape;
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const servidoresModel = new application.app.models.ServidoresDAO(connection);
-		servidoresModel.dadosServidor(vnome, function(error, result)
+		servidoresModel.pegarNome(vnome, function(error, result)
 		{
 			res.render("perfilservidor", {usuario: result});
 		});		

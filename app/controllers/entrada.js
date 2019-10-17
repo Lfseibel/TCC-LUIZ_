@@ -25,11 +25,13 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
+	console.log(req.body);
 	const curso = req.body.value[0];
 	const periodo = req.body.value[1];
 	const semestre = req.body.value[2];
 	const turma = req.body.value[3];
 	const descricao = req.body.value[4];
+	
 	//const arquivo = req.body.value[5];
 	// const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 	// const alunosModel = new application.app.models.AlunosDAO(connection);

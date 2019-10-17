@@ -44,11 +44,10 @@ module.exports.salvar_Aluno = function(application, req, res){
 	/* importar o modulo do bcrypt*/
 	const bcrypt = require('bcrypt');
 	const saltRounds = 10;
-	if (senha==csenha) 
-	{
+	if (senha == csenha) {
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.verificarCadastro(ra, cpf, rg, email, function(error, result){
+		alunosModel.verificarCadastro(ra, cpf, rg, email, function (error, result) {
 			if (result.length > 0) {
 							Toast.fire({
 								type: 'error',

@@ -152,7 +152,11 @@ $('.lista li').click(function () {
         {
           //const imagem = JSON.stringify(result.value[5].name);
           const imagem = result.value[5].name;
-          alert(result.value[5].file);
+          alert(result.value[5].lastModifiedDate);
+          alert(result.value[5].size);
+          alert(result.value[5].type);
+          alert(result.value[5].webkitRelativePath);
+          //https://developer.mozilla.org/en-US/docs/Web/API/File   ver com o devigo formidable e express-fileupload no npm
           $.post("/alunos/enviar", {requerimento : requerimento, curso : curso, periodo : periodo, semestre : semestre, turma : turma, descricao : descricao, imagem : imagem}, function (res) {
             Swal.fire(
               'Sucesso!',

@@ -18,12 +18,16 @@ AlunosDAO.prototype.coisasAluno = function(vnome, callback){
 	this._connection.query('select * from usuario where ra_usuario = ? ', vnome, callback);
 }
 
+AlunosDAO.prototype.idAluno = function(usuario, callback){
+	this._connection.query('select id_usuario from usuario where ra_usuario = ? ', usuario, callback);
+}
+
 AlunosDAO.prototype.dadosAluno = function(vnome, callback){
 	this._connection.query('select * from usuario where ra_usuario = ? ', vnome, callback);
 }
 
-AlunosDAO.prototype.salvarRequerimento = function(curso, periodo, semestre, turma, descricao, ra, callback){
-	this._connection.query('insert into requerimento set curso_requerimento = ?,periodo_requerimento = ?,semestre_requerimento = ?,turma_requerimento = ?,descricao_requerimento = ?,ra_requerimento = ?', [curso, periodo, semestre, turma, descricao, ra], callback);//jason na funcao query e inseri quando acha o ?
+AlunosDAO.prototype.salvarRequerimento = function(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, callback){
+	this._connection.query('insert into requerimento set tipo_requerimento = ?,curso_requerimento = ?,periodo_requerimento = ?,semestre_requerimento = ?,turma_requerimento = ?,descricao_requerimento = ?,imagem_requerimento = ?,usuario_requerimento = ?', [requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario], callback);//jason na funcao query e inseri quando acha o ?
 }
 
 module.exports = function(){

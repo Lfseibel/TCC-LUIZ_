@@ -31,6 +31,7 @@ document.querySelector('.icones').addEventListener('click', function (event) {
 });
 // modal que receberá as informações do usuário
 $('.lista li').click(function () {
+  var id = $(this).attr('id');
   Swal.mixin({
     inputPlaceholder: 'Escolha a opção',
     confirmButtonText: 'Próximo',
@@ -129,14 +130,38 @@ $('.lista li').click(function () {
   ])
     .then((result) => {
       if (result.value) {
-        alert(result.value[5].name);
-        $.post("/alunos/enviar", result, function (res) {
-          Swal.fire(
-            'Sucesso!',
-            'Seu requerimento foi enviado com sucesso!',
-            'success',
-          )
-        })
+        alert(result.value);
+        const requerimento = id;
+        const curso = result.value[0];
+        const periodo = result.value[1];
+        const semestre = result.value[2];
+        const turma = result.value[3];
+        const descricao = result.value[4];
+        if(result.value[5]==null)
+        { 
+          const imagem = result.value[5];
+          $.post("/alunos/enviar", {requerimento : requerimento, curso : curso, periodo : periodo, semestre : semestre, turma : turma, descricao : descricao, imagem : imagem}, function (res) {
+            Swal.fire(
+              'Sucesso!',
+              'Seu requerimento foi enviado com sucesso!',
+              'success',
+            )
+          })
+        } 
+        else
+        {
+          //const imagem = JSON.stringify(result.value[5].name);
+          const imagem = result.value[5].name;
+          alert(result.value[5].file);
+          $.post("/alunos/enviar", {requerimento : requerimento, curso : curso, periodo : periodo, semestre : semestre, turma : turma, descricao : descricao, imagem : imagem}, function (res) {
+            Swal.fire(
+              'Sucesso!',
+              'Seu requerimento foi enviado com sucesso!',
+              'success',
+            )
+          })
+        }
+          
       }
       else {
         Swal.fire(
@@ -147,4 +172,20 @@ $('.lista li').click(function () {
       }
     })
 });
+
+// const readUploadedFile = (inputFile) => {
+//   const reader = new FileReader();
+
+//   return new Promise((resolve, reject) => {
+//     reader.onerror = () => {
+//       reader.abort();
+//       reject(new DOMException("Problem parsing input file."));
+//     };
+
+//     reader.onload = (e) => {
+//       resolve(e.target.result);
+//     };
+//     reader.readAsDataURL(inputFile);
+//   });
+// };
 

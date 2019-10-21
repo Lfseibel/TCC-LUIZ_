@@ -7,6 +7,9 @@ const session = require('express-session');
 /* importar o modulo do consign*/
 const consign = require('consign');
 
+/* importar o modulo do express upload*/
+const fileUpload = require('express-fileupload');
+
 /* importar o modulo do body-parser*/
 const bodyParser = require('body-parser');
 
@@ -35,10 +38,13 @@ app.use(session({
 
 
 /* configurar o middleware body-parser*/
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 /* configurar o middleware express-validator*/
 app.use(expressValidator());
+
+app.use(fileUpload());
 
 /* configurar o consign, para fazer o autoload das rotas, models e controllers para o app*/
 consign()

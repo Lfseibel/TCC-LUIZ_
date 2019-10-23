@@ -1,11 +1,16 @@
 module.exports.entrada = function(application, req, res) {
 	if (req.session.loggedin) {
-		const vnome = req.session.ra;
+		const usuario = req.session.ra;
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const alunosModel = new application.app.models.AlunosDAO(connection);
-		alunosModel.coisasAluno(vnome, function(error, result)
+		alunosModel.idAluno(usuario, function(error, result)
 		{
-			res.render("entrada", {usuario: result});
+			const idusuario = result[0].id_usuario;
+			var aluno = result;
+			alunosModel.requerimentosAluno(idusuario, function(error, result)
+			{
+					res.render("entrada", {tudo: result, usuario: aluno});
+			});		
 		});		
 	} 
 	else 
@@ -44,6 +49,7 @@ if(req.files)
 			alunosModel.idAluno(usuario, function(error, result)
 			{
 				const idusuario = result[0].id_usuario;
+				console.log(idusuario);
 				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
 					res.send('oi');	
 				});	
@@ -55,7 +61,7 @@ else
 	alunosModel.idAluno(usuario, function(error, result)
 			{
 				const idusuario = result[0].id_usuario;
-				const imagem = "";
+				const imagem = null;
 				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
 					res.send('oi');	
 				});	

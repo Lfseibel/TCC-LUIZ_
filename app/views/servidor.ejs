@@ -10,17 +10,26 @@
 </head>
 
 <body>
-  <header><!--estrutura do cabeçalho e dropdow de perfil-->
-     <h1 class="titulo">Requerimento Online</h1>
-    <input type="search" class="busca_req" placeholder= "Pesquise seu Requerimento">
+  <header>
+    <!--estrutura do cabeçalho e dropdow de perfil-->
+    <a href="#" class="ssm-toggle-nav" title="open nav">
+      <i class="fas fa-bars fa-lg icon"></i>
+    </a>
+    <h1 class="titulo">Requerimento Online</h1>
     <div class="menu icon-profile">
-      <button class="menu-button"><img src="http://i.pravatar.cc/50"><span class="title"><%= servidor[0].nome_servidor %></span></button>
+      <button class="menu-button"><img src="https://i.pravatar.cc/50"><span class="title"><%= servidor[0].nome_servidor %></span></button>
       <div class="menu-dropdown hidden">
         <div class="content">
           <ul>
-            <a href="/perfilservidor"><li>Perfil do Servidor</li></a>
-            <a href="/tcadastroservidor"><li>Adicionar Servidor</li></a>
-            <a href="/sair"><li>Sair</li></a>
+            <a href="/perfilservidor">
+              <li>Perfil do Servidor</li>
+            </a>
+            <a href="/tcadastroservidor">
+              <li>Adicionar Servidor</li>
+            </a>
+            <a href="/sair">
+              <li>Sair</li>
+            </a>
           </ul>
         </div>
       </div>
@@ -29,7 +38,7 @@
   <!--Término da estruturação do cabeçalho e dropdow de perfil-->
 
   <!--Estrutura do menu deslizante-->
-  <nav class="menu-des">
+  <nav class="menu-pc menu-mobile">
     <div class="icones">
       <a class="icone active" data-container="caixa_entrada">
         <i class="far fa-envelope fa-lg"></i>
@@ -37,53 +46,61 @@
       </a>
       <a class="icone" data-container="deferred-requirements">
         <i class="far fa-check-circle fa-lg"></i>
-        Requerimentos Deferidos
+        Deferidos da Semana
       </a>
       <a class="icone" data-container="rejected-requirements">
         <i class="far fa-times-circle fa-lg"></i>
-        Requerimentos Indeferidos
+        Indeferidos da Semana
+      </a>
+      <a class="icone" data-container="all-requirements">
+        <i class="fas fa-archive fa-lg"></i>
+        Todos os Requerimentos
       </a>
     </div>
   </nav>
+  <div class="ssm-overlay ssm-toggle-nav"></div>
   <!--Término de estruturação do menu deslizante-->
 
-  <!--Estruturação do menu de navegação do usuário/estudante-->
+  <!--Estruturação do menu de navegação do servidor-->
+
+  <!--Estruturação da tabela de caixa de entrada-->
   <main>
     <div class="caixa_entrada container">
-       <table class="content-table">
-            <thead>
-                <tr>
-                    <th>Aluno</th>
-                    <th>Motivo</th>
-                    <th>Data</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox">Carlos Eduardo Mascarenhas Oliveira</td>
-                    <td>Mudança de turno</td>
-                    <td>19 de ago</td>
-                </tr>
-                <tr class="active-row">
-                    <td><input type="checkbox">Felipe Souza</td>
-                    <td>Mudança de turma</td>
-                    <td>20 de ago</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox">Luiz Seibel</td>
-                    <td>Outros</td>
-                    <td>15 de nov</td>
-                </tr>
-                <tr class="active-row">
-                    <td><input type="checkbox">Sergio Ricardo</td>
-                    <td>Segunda via de crachá</td>
-                    <td>20 de out</td>
-                </tr>
-            </tbody>
-       </table>
+      <table class="table-box">
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Motivo</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carlos Eduardo Mascarenhas Oliveira</td>
+            <td>Mudança de turno</td>
+            <td>19 de ago</td>
+          </tr>
+          <tr class="active-row">
+            <td>Felipe Souza</td>
+            <td>Mudança de turma</td>
+            <td>20 de ago</td>
+          </tr>
+          <tr>
+            <td>Luiz Seibel</td>
+            <td>Outros</td>
+            <td>15 de nov</td>
+          </tr>
+          <tr class="active-row">
+            <td>Sergio Ricardo</td>
+            <td>Segunda via de crachá</td>
+            <td>20 de out</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <!--Término da tabela-->
 
-
+    <!--Estruturação dos requerimentos-->
     <div class="deferred-requirements container displayNone">
       <ul class="documentos">
         <li>
@@ -96,95 +113,192 @@
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
             </div>
           </a>
         </li>
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
             </div>
           </a>
         </li>
         <li>
           <a href="#">
             <div class="document-req">
-                <div class="linha"></div>
+              <div class="linha"></div>
             </div>
           </a>
         </li>
       </ul>
     </div>
     <div class="rejected-requirements container displayNone">
-    <ul class="documentos">
-      <li>
-        <a href="#">
-          <div class="document-req">
-            <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
+      <ul class="documentos">
+        <li>
+          <a href="#">
+            <div class="document-req">
               <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
               <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="document-req">
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
               <div class="linha-rej"></div>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="pending-requirements container displayNone">
-  <ul class="documentos">
-    <li>
-      <a href="#">
-        <div class="document-req">
-          <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <div class="document-req">
-            <div class="linha-pen"></div>
-        </div>
-      </a>
-      </li>
-     </ul>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="document-req">
+              <div class="linha-rej"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
+
+    <div class="all-requirements container displayNone">
+      <div class="grupo-busca">
+        <div class="busca">
+          <input type="search" class="busca-requerimento" placeholder="Buscar Requerimento">
+        </div>
+        <div class="filtro">
+          <div class="filter">
+            <p class="text-filtro">Filtro</p> <i class="fas fa-caret-down"></i>
+          </div>
+        </div>
+      </div>
+      <div class="requirements">
+        <table class="table-all-requirements">
+          <thead>
+            <tr>
+              <th>Aluno</th>
+              <th>Motivo</th>
+              <th>Data</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Carlos Eduardo Mascarenhas Oliveira</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Witor Hugo Cardoso</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Ana Beatriz Silva Cortonezi</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Indeferido</td>
+            </tr>
+            <tr>
+              <td>Tatiana Lavratti</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Barbára Correa</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Indeferido</td>
+            </tr>
+            <tr>
+              <td>Felipe Rodrigues</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>João Mateus Baldonado</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Indeferido</td>
+            </tr>
+            <tr>
+              <td>Rafaela Mangolin</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Indeferido</td>
+            </tr>
+            <tr>
+              <td>Maisa</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Carlos Eduardo</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Emanuelly</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Carlos Eduardo Mascarenhas Oliveira</td>
+              <td>Mudança de turno</td>
+              <td>19 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr class="active-row">
+              <td>Felipe Souza</td>
+              <td>Mudança de turma</td>
+              <td>20 de ago</td>
+              <td>Deferido</td>
+            </tr>
+            <tr>
+              <td>Luiz Seibel</td>
+              <td>Outros</td>
+              <td>15 de nov</td>
+              <td>Deferido</td>
+            </tr>
+            <tr class="active-row">
+              <td>Sergio Ricardo</td>
+              <td>Segunda via de crachá</td>
+              <td>20 de out</td>
+              <td>Deferido</td>
+            </tr>
+            <tr class="active-row">
+              <td>Sergio Ricardo</td>
+              <td>Segunda via de crachá</td>
+              <td>20 de out</td>
+              <td>Deferido</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </main>
   <!--Término da estruturação do menu-->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="js/touch.js"></script>
+  <script src="js/jquery.slideandswipe.js"></script>
   <script src="js/tela_servidor.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

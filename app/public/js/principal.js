@@ -29,6 +29,12 @@ document.querySelector('.icones').addEventListener('click', function (event) {
     document.querySelector(`.${container_name}`).classList.remove('displayNone');
   }
 });
+
+if(screen.width < 1024){ 
+  $(document).ready(function() {
+    $('.menu-mobile').slideAndSwipe();
+  });
+}
 // modal que receberá as informações do usuário
 $('.lista li').click(function () {
   var id = $(this).attr('id');

@@ -3,3 +3,4 @@ Create table usuario (id_usuario int not null primary key auto_increment,nome_us
 Create table servidor (id_usuario int not null primary key auto_increment,nome_servidor varchar(100),siape_servidor varchar(6),senha_servidor varchar(100));
 
 Create table requerimento (id_requerimento int not null primary key auto_increment, tipo_requerimento varchar(100), curso_requerimento varchar(100), periodo_requerimento varchar(100), semestre_requerimento varchar(100), turma_requerimento varchar(100), descricao_requerimento varchar(1000), imagem_requerimento varchar(1000), usuario_requerimento int, defericao_requerimento varchar(100), razao_defericao varchar(1000), foreign key (usuario_requerimento) references usuario(id_usuario));
+

@@ -12,14 +12,21 @@
 <body>
   <header>
     <!--estrutura do cabeçalho e dropdow de perfil-->
+    <a href="#" class="ssm-toggle-nav" title="open nav">
+      <i class="fas fa-bars fa-lg icon"></i>
+    </a>
     <h1 class="titulo">Requerimento Online</h1>
     <div class="menu icon-profile">
-      <button class="menu-button"><img src="http://i.pravatar.cc/50"><span class="title"><%= usuario[0].nome_usuario %></span></button>
+      <button class="menu-button"><img src="https://i.pravatar.cc/50"><span class="title"><%= usuario[0].nome_usuario %></span></button>
       <div class="menu-dropdown hidden">
         <div class="content">
           <ul>
-            <a href="/perfil"><li>Perfil do estudante</li></a>
-            <a href="/sair"><li>Sair</li></a>
+            <a href="/perfil">
+              <li>Perfil do estudante</li>
+            </a>
+            <a href="/sair">
+              <li>Sair</li>
+            </a>
           </ul>
         </div>
       </div>
@@ -28,7 +35,7 @@
   <!--Término da estruturação do cabeçalho e dropdow de perfil-->
 
   <!--Estrutura do menu deslizante-->
-  <nav class="menu-des">
+  <nav class="menu-pc menu-mobile">
     <div class="icones">
       <a class="icone active" data-container="new-requirement">
         <i class="fas fa-plus fa-lg"></i>
@@ -48,6 +55,7 @@
       </a>
     </div>
   </nav>
+  <div class="ssm-overlay ssm-toggle-nav"></div>
   <!--Término de estruturação do menu deslizante-->
 
   <!--Estruturação do menu de navegação do usuário/estudante-->
@@ -55,79 +63,79 @@
 
     <div class="new-requirement container">
       <ul class="lista">
-        <li id="historico">
+        <li id="Histórico Escolar">
           <a>
-            <img src="./img/historico.png" alt="">
+            <img src="./img/Histórico Escolar.png" alt="">
             <span>Histórico Escolar</span>
           </a>
         </li>
-        <li>
+        <li id="Exame de Suficiência">
           <a>
-            <img src="./img/exame.png" alt="">
+            <img src="./img/Exame de Suficiência.png" alt="">
             <span>Exame de Suficiência</span>
           </a>
         </li>
-        <li>
+        <li id="Enriquecimento Escolar">
           <a>
-            <img src="./img/enriquecimento_escolar.png" alt="">
+            <img src="./img/Enriquecimento Escolar.png" alt="">
             <span>Enriquecimento Escolar</span>
           </a>
         </li>
-        <li>
+        <li id="Declaração">
           <a>
-            <img src="./img/declaracao.png" alt="">
+            <img src="./img/Declaração.png" alt="">
             <span>Declaração</span>
           </a>
         </li>
-        <li>
+        <li id="Convalidação">
           <a>
-            <img src="./img/convalidacao.png" alt="">
+            <img src="./img/Convalidação.png" alt="">
             <span>Convalidação</span>
           </a>
         </li>
-        <li>
+        <li id="Certificado de Qualificação Profissional">
           <a>
-            <img src="./img/certificado.png" alt="">
+            <img src="./img/Certificado de Qualificação Profissional.png" alt="">
             <span>Certificado de Qualificação Profissional</span>
           </a>
         </li>
 
-        <li>
+        <li id="Matricula em Unidade Curricular">
           <a>
-            <img src="./img/matricula.png" alt="">
+            <img src="./img/Matricula em Unidade Curricular.png" alt="">
             <span>Matricula em Unidade Curricular</span>
           </a>
         </li>
 
-        <li>
+        <li id="Mudança de Turno">
           <a>
-            <img src="./img/mudanca_de_turno.png" alt="">
+            <img src="./img/Mudança de Turno.png" alt="">
             <span>Mudança de Turno</span>
           </a>
         </li>
 
-        <li>
+        <li id="Mudança de Turma">
           <a>
-            <img src="./img/mudanca_de_turma.png" alt="">
+            <img src="./img/Mudança de Turma.png" alt="">
             <span>Mudança de Turma</span>
           </a>
         </li>
 
-        <li>
+        <li id="Segunda Chamada">
           <a>
-            <img src="./img/Segunda chamada.png" alt="">
+            <img src="./img/Segunda Chamada.png" alt="">
             <span>Segunda Chamada</span>
           </a>
         </li>
 
-        <li>
+        <li id="Segunda Via de Crachá">
           <a>
-            <img src="./img/cracha.png" alt="">
+            <img src="./img/Segunda Via de Crachá.png" alt="">
             <span>Segunda Via de Crachá</span>
           </a>
         </li>
 
-        <li>
+        <li id="Outros">
           <a>
             <img src="./img/Outros.png" alt="">
             <span>Outros</span>
@@ -135,111 +143,66 @@
         </li>
       </ul>
     </div>
+    <% if(tudo.length > 0) { %>
+      <% for(var i = 0; i < tudo.length; i++) {%>
     <div class="deferred-requirements container displayNone">
       <ul class="documentos">
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha"></div>
-            </div>
-          </a>
-        </li>
+          <!-- algum if pra logica dps -->
+            <% if(tudo[i].defericao_requerimento=="Deferido"){%>
+              <li>
+                  <a href="#">
+                    <div class="document-req">
+                      <div class="linha"></div>
+                    </div>
+                  </a>
+                </li>
+            <% } %>
+        
       </ul>
     </div>
     <div class="rejected-requirements container displayNone">
       <ul class="documentos">
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-rej"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-rej"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-rej"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-rej"></div>
-            </div>
-          </a>
-        </li>
+            <% if(tudo[i].defericao_requerimento=="Indeferido"){%>
+              <li>
+                <a href="#"> 
+                  <div class="document-req">
+                    <div class="linha-rej"></div>
+                  </div>
+                </a>
+              </li>
+            <% } %>
       </ul>
     </div>
 
     <div class="pending-requirements container displayNone">
       <ul class="documentos">
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-pen"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-pen"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-pen"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="document-req">
-              <div class="linha-pen"></div>
-            </div>
-          </a>
-        </li>
+          <% if(tudo[i].defericao_requerimento==null){ %>
+             <% for(var i = 0; i < tudo.length; i++) { %> 
+            <li>
+                <a href="#"> <%= tudo[i].id_requerimento %>
+                  <div class="document-req">
+                      <img src="/img/<%=tudo[i].tipo_requerimento%>.png" alt="">
+                    <div class="linha-pen"></div>
+                  </div>
+                </a>
+            </li>
+            <% } %> 
+          <% } %>
       </ul>
     </div>
+    <% } %>
+<% } %>
   </main>
   <!--Término da estruturação do menu-->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="js/touch.js"></script>
   <script src="js/principal.js"></script>
+  <script src="js/jquery.slideandswipe.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>

@@ -10,19 +10,6 @@
 </head>
 
 <body>
-    <% if(validacao.length > 0) { %>
-      <div>
-        <div>
-          <div>
-            <ul>
-              <% for(var i = 0; i < validacao.length; i++) { %>
-              <li><%= validacao[i].msg %></li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    <% } %>
   <div class="cadastro">
     <header class="cadastro_header">
       <h1 class="titulo">ÁREA DE CADASTRO</h1>
@@ -61,7 +48,23 @@
   integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
   crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+  <script type="text/javascript">
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    })
+    
+    window.onload(function() {
+      Toast.fire({
+        type: 'success',
+        title: validacao[i].msg
+      });
+    })
   
+  </script>
 </body>
 
 </html>

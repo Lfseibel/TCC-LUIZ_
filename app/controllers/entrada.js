@@ -25,25 +25,51 @@ module.exports.logout_Aluno = function(application, req, res){
 }
 
 module.exports.enviar = function(application, req, res){
-	console.log(req.body);
-	const requerimento = req.body.requerimento;
-	const curso = req.body.curso;
-	const periodo = req.body.periodo;
-	const semestre = req.body.semestre;
-	const turma = req.body.turma;
-	const descricao = req.body.descricao;
-	const imagem = req.body.imagem;
-	const usuario = req.session.ra;
+const requerimento = req.body.requerimento;
+const curso = req.body.curso;
+const periodo = req.body.periodo;
+const semestre = req.body.semestre;
+const turma = req.body.turma;
+const descricao = req.body.descricao;
+const usuario = req.session.ra;
 
-	const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-	const alunosModel = new application.app.models.AlunosDAO(connection);
+const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
+const alunosModel = new application.app.models.AlunosDAO(connection);
+
+if(req.files)
+{
+		const imagem = req.files.file.name;
+		const arquivo = req.files.file;
+		arquivo.mv('app/public/img/upload/'+imagem, function(err) {
+			alunosModel.idAluno(usuario, function(error, result)
+			{
+				const idusuario = result[0].id_usuario;
+				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
+					res.send('oi');	
+				});	
+			});		
+	});
+}
+else
+{
 	alunosModel.idAluno(usuario, function(error, result)
-		{
-			const idusuario = result[0].id_usuario;
-			alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
-				res.send('oi');	
+			{
+				const idusuario = result[0].id_usuario;
+				const imagem = "";
+				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
+					res.send('oi');	
+				});	
 			});	
-		});		
+}
+		
+
+	
+
+	
+
+
+	
+
 	
 	
 }

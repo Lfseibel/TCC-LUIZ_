@@ -131,40 +131,28 @@ $('.lista li').click(function () {
     .then((result) => {
       if (result.value) {
         alert(result.value);
-        const requerimento = id;
-        const curso = result.value[0];
-        const periodo = result.value[1];
-        const semestre = result.value[2];
-        const turma = result.value[3];
-        const descricao = result.value[4];
-        if(result.value[5]==null)
-        { 
-          const imagem = result.value[5];
-          $.post("/alunos/enviar", {requerimento : requerimento, curso : curso, periodo : periodo, semestre : semestre, turma : turma, descricao : descricao, imagem : imagem}, function (res) {
-            Swal.fire(
-              'Sucesso!',
-              'Seu requerimento foi enviado com sucesso!',
-              'success',
-            )
-          })
-        } 
-        else
-        {
-          //const imagem = JSON.stringify(result.value[5].name);
-          const imagem = result.value[5].name;
-          alert(result.value[5].lastModifiedDate);
-          alert(result.value[5].size);
-          alert(result.value[5].type);
-          alert(result.value[5].webkitRelativePath);
-          //https://developer.mozilla.org/en-US/docs/Web/API/File   ver com o devigo formidable e express-fileupload no npm
-          $.post("/alunos/enviar", {requerimento : requerimento, curso : curso, periodo : periodo, semestre : semestre, turma : turma, descricao : descricao, imagem : imagem}, function (res) {
-            Swal.fire(
-              'Sucesso!',
-              'Seu requerimento foi enviado com sucesso!',
-              'success',
-            )
-          })
-        }
+        
+        var requerimento = new Requerimento(result, id);
+        
+        $.ajax({
+          type: 'POST',
+          url: "/alunos/enviar",
+          // Form data
+          data: requerimento.toFormData(),
+          headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+          // Tell jQuery not to process data or worry about content-type
+          // You *must* include these options!
+          cache: false,
+          contentType: false,
+          processData: false,
+        }).done(function(res) {
+          Swal.fire(
+            'Sucesso!',
+            'Seu requerimento foi enviado com sucesso!',
+            'success',
+          )
+        })
+        
           
       }
       else {
@@ -177,19 +165,24 @@ $('.lista li').click(function () {
     })
 });
 
-// const readUploadedFile = (inputFile) => {
-//   const reader = new FileReader();
+class Requerimento {
+  constructor(result, id) {
+    this.requerimento = id;
+    this.curso = result.value[0];
+    this.periodo = result.value[1];
+    this.semestre = result.value[2];
+    this.turma = result.value[3];
+    this.descricao = result.value[4];
+    this.file = result.value[5];
+  }
 
-//   return new Promise((resolve, reject) => {
-//     reader.onerror = () => {
-//       reader.abort();
-//       reject(new DOMException("Problem parsing input file."));
-//     };
+  toFormData() {
+    var f = new FormData();
+    var self = this;
+    Object.keys(this).forEach(function(key){
+      f.append(key, self[key]);
+    });
 
-//     reader.onload = (e) => {
-//       resolve(e.target.result);
-//     };
-//     reader.readAsDataURL(inputFile);
-//   });
-// };
-
+    return f;
+  }
+}

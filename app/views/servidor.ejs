@@ -65,6 +65,8 @@
 
   <!--Estruturação da tabela de caixa de entrada-->
   <main>
+    <% if(tudo.length > 0) { %>
+     
     <div class="caixa_entrada container">
       <table class="table-box">
         <thead>
@@ -75,29 +77,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Carlos Eduardo Mascarenhas Oliveira</td>
-            <td>Mudança de turno</td>
-            <td>19 de ago</td>
-          </tr>
-          <tr class="active-row">
-            <td>Felipe Souza</td>
-            <td>Mudança de turma</td>
-            <td>20 de ago</td>
-          </tr>
-          <tr>
-            <td>Luiz Seibel</td>
-            <td>Outros</td>
-            <td>15 de nov</td>
-          </tr>
-          <tr class="active-row">
-            <td>Sergio Ricardo</td>
-            <td>Segunda via de crachá</td>
-            <td>20 de out</td>
-          </tr>
+            <% for(var i = 0; i < tudo.length; i++) {%>
+              <tr class="active-row">
+                <td><%= tudo[i].nome_usuario %></td>
+                <td><%= tudo[i].tipo_requerimento %></td>
+                <td><%= tudo[i].nome_usuario %></td>
+              </tr>
+          <% } %>
         </tbody>
       </table>
     </div>
+     
     <!--Término da tabela-->
 
     <!--Estruturação dos requerimentos-->
@@ -288,7 +278,7 @@
         </table>
       </div>
     </div>
-
+    <% } %>
   </main>
   <!--Término da estruturação do menu-->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

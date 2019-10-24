@@ -156,7 +156,9 @@ $('.lista li').click(function () {
             'Sucesso!',
             'Seu requerimento foi enviado com sucesso!',
             'success',
-          )
+          ).then(function(){
+            location.reload();
+          })
         })
         
           

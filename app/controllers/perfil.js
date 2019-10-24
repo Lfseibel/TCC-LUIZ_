@@ -19,7 +19,7 @@ module.exports.perfilservidor = function(application, req, res) {
 		const servidoresModel = new application.app.models.ServidoresDAO(connection);
 		servidoresModel.pegarNome(vnome, function(error, result)
 		{
-			res.render("perfilservidor", {usuario: result});
+			res.render("perfilservidor", {servidor: result});
 		});		
 	} else {
 		res.redirect('/');

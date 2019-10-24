@@ -5,8 +5,12 @@ module.exports.servidor = function(application, req, res) {
 		const servidoresModel = new application.app.models.ServidoresDAO(connection);
 		servidoresModel.pegarNome(vsiape, function(error, result)
 		{
-			res.render("servidor", {servidor: result});
-		});	
+			var servidor = result;
+			servidoresModel.requerimentosSemana(function(error, result)
+			{
+					res.render("servidor", {tudo: result, servidor: servidor});
+			});		
+		});
 	} 
 	else 
 	{

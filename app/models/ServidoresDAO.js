@@ -18,8 +18,8 @@ ServidoresDAO.prototype.pegarNome = function(vsiape, callback){
 	this._connection.query('select * from servidor where siape_servidor = ? ', vsiape, callback);
 }
 
-ServidoresDAO.prototype.mostrarRequerimentos = function(callback){
-	this._connection.query('select * from requerimento', callback);
+ServidoresDAO.prototype.requerimentosSemana = function(callback){
+	this._connection.query('select * from requerimento inner join usuario on id_usuario=usuario_requerimento', callback);
 }
 
 module.exports = function(){

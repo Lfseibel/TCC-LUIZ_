@@ -721,9 +721,7 @@ main{
 }
 /* responsividade resolução de computador 1080*/
 @media (min-width: 1800px) {
-  body{
-    overflow: hidden;
-  }
+
   .documentos li img {
     width: 110px;
     height: auto;

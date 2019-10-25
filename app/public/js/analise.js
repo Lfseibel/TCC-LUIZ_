@@ -62,11 +62,9 @@ $('.btn-deferir').click(function () {
           ])
           .then((result) => {
             if (result.value) {
-              const requerimento = result.value;
+              const requerimento = result.value[0];
               alert(requerimento);
-              const enviar = { requerimento };
-              alert(enviar);
-              $.post("/alunos/enviar", enviar, function (res) {
+              $.post("/servidor/validar", {validacao: requerimento}, function (res) {
                 Swal.fire(
                   'Sucesso!',
                   'Requerimento Indeferido!',

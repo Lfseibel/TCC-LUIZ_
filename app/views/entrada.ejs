@@ -179,7 +179,7 @@
           <% if(tudo[i].defericao_requerimento==null){ %>
              <% for(var i = 0; i < tudo.length; i++) { %> 
             <li>
-                <a href="#"> <%= tudo[i].id_requerimento %>
+                <a href="#<%= tudo[i].id_requerimento %>">
                   <div class="document-req">
                       <img src="/img/<%=tudo[i].tipo_requerimento%>.png" alt="">
                     <div class="linha-pen"></div>

@@ -17,61 +17,48 @@ module.exports.tcadastro = function(application, req, res) {
 }
 
 module.exports.salvar_Aluno = function(application, req, res){
-	const usuario = req.body;
-	console.log(usuario);
+	console.log(req.body);
+	const ra = req.body.ra_usuario; 
+	const cpf = req.body.cpf_usuario;
+	const rg = req.body.rg_usuario;
+	const email = req.body.email_usuario;
+	const nome = req.body.nome_usuario;
+	const senha = req.body.senha_usuario;
+	const csenha = req.body.csenha_usuario;
+	
 	req.assert('nome_usuario','Nome do usuário é obrigatorio').notEmpty();
 	req.assert('ra_usuario','RA deve conter 6 números').len(6,6);
 	req.assert('cpf_usuario','CPF deve conter 11 digitos').len(11,11);
 	req.assert('rg_usuario','RG deve conter entre 4 á 12 digitos').len(4,12);
 	const erros = req.validationErrors();
 	if (erros) {
-		res.render("tcadastro", {validacao : erros, usuario : usuario});
+		res.send('preencher');
 		return;
 	}
-	const ra = usuario.ra_usuario; 
-	const cpf = usuario.cpf_usuario;
-	const rg = usuario.rg_usuario;
-	const email = usuario.email_usuario;
-	const nome = usuario.nome_usuario;
-	const senha = usuario.senha_usuario;
-	const csenha = usuario.csenha_usuario;
-	const Swal = require('sweetalert2');
-	const Toast = Swal.mixin({
-		toast: true,
-		position: 'top-end',
-		timer: 3000
-	});
 	/* importar o modulo do bcrypt*/
 	const bcrypt = require('bcrypt');
 	const saltRounds = 10;
-	if (senha == csenha) {
+	if(senha==csenha){
 		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 		const alunosModel = new application.app.models.AlunosDAO(connection);
 		alunosModel.verificarCadastro(ra, cpf, rg, email, function (error, result) {
 			if (result.length > 0) {
-							Toast.fire({
-								type: 'error',
-								title: 'Já existe um usuário com este RA/CPF/RG ou EMAIL cadastrado'
-							});
-							console.log('erro1');
+					console.log('aqui2');
+					res.send('cadastrado');
 					} else {
 						bcrypt.hash(senha, saltRounds, function(err, hash){
 							alunosModel.salvarAluno(ra, cpf, rg, email, nome, hash, function(error, result){													
-								Toast.fire({
-									type: 'success',
-									title: 'Cadastro Realizado'
-								});
+								res.send('sucesso');
 							});	
-						});		
-				}		
+					});		
+			}		
 		});
 	} 
-	else 
+	else
 	{
-		Toast.fire({
-			type: 'error',
-			title: 'Senhas não batem'
-		});
-		console.log('erro2');
+		console.log('aqui');
+		res.send('errodasenha');
 	}
-}
+		
+} 
+

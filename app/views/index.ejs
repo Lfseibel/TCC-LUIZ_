@@ -17,7 +17,7 @@
         <div class="forms">
             <div class="form-login is-active"><!--inicio formulário aluno-->
                 <button type="button" class="botao botao-aluno">ALUNO<span class="linha"></span></button>
-                <form class="form aluno-login" action="/alunos/login" method="post">
+                <form class="form aluno-login">
                     <fieldset>
                         <legend>Por gentileza preencha todos os campos abaixo.</legend>
                         <div class="input-block">
@@ -35,25 +35,25 @@
                             </a>
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn-login-aluno">Login</button>
+                    <button type="button" class="btn-login-aluno" onclick="login_aluno()">Login</button>
                 </form>
             </div> <!--término do formulário aluno-->
             <div class="form-login"> <!--inicio do formulário servidor-->
                 <button type="button" class="botao botao-servidor">SERVIDOR<span class="linha"></span></button>
-                <form class="form servidor-login" action="/servidor/login" method="post">
+                <form class="form servidor-login">
                     <fieldset>
                         <legend>Por gentileza preencha todos os campos abaixo.</legend>
                         <div class="input-block">
                             <div class="servidor-img"></div>
                             <label for="siape">Siape</label>
-                            <input id="siape" type="text" name="siape_servidor" required>
+                            <input id="siape_servidor" type="text" name="siape_servidor" required>
                         </div>
                         <div class="input-block">
                             <label for="senha">Senha</label>
-                            <input id="senha" type="password" name="senha_servidor" required>
+                            <input id="senha_servidor" type="password" name="senha_servidor" required>
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn-login-servidor">Login</button>
+                    <button type="button" class="btn-login-servidor" onclick="login_servidor()">Login</button>
                 </form>
             </div><!--término do formulário servidor-->
         </div>
@@ -106,6 +106,13 @@
             </div>
     </section>  
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/js/login.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="https://unpkg.com/toastmejs@latest/dist/js/toastme.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 </html>

@@ -1,0 +1,75 @@
+.toastme {
+    &.dark {
+
+        &.default {
+            color: $font-color-dark;
+            background-color: $bg-dark;
+            border: 1px solid $border-dark;
+
+            .toastme-ico {
+                color: lighten($font-color-dark, 10%);
+                &:before {
+                    content: $ico-notification;
+                }
+            }
+        }
+
+        &.success {
+            color: $font-color-dark;
+            background-color: $bg-dark;
+            border: 1px solid $border-dark;
+
+            .toastme-ico {
+                color: $success;
+
+                &:before {
+                    content: $ico-success;
+                }
+            }
+        }
+
+
+        &.error {
+            color: $font-color-dark;
+            background-color: $bg-dark;
+            border: 1px solid $border-dark;
+
+            .toastme-ico {
+                color: $danger;
+
+                &:before {
+                    content: $ico-danger;
+                }
+            }
+        }
+
+        &.warning {
+            color: $font-color-dark;
+            background-color: $bg-dark;
+            border: 1px solid $border-dark;
+
+            .toastme-ico {
+                color: $warning;
+
+                &:before {
+                    content: $ico-warning;
+                }
+            }
+        }
+
+        &.info {
+            color: $font-color-dark;
+            background-color: $bg-dark;
+            border: 1px solid $border-dark;
+
+            .toastme-ico {
+                color: $info;
+
+                &:before {
+                    content: $ico-info;
+                }
+            }
+        }
+    }
+
+}

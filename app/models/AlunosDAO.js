@@ -14,6 +14,10 @@ AlunosDAO.prototype.verificarCadastro = function(ra, cpf, rg, email, callback){
 	this._connection.query('select * from usuario where ra_usuario = ? OR cpf_usuario = ? OR rg_usuario = ? OR email_usuario = ?', [ra,cpf,rg,email], callback);
 }
 
+AlunosDAO.prototype.verificarCadastroLogin = function(ra, callback){
+	this._connection.query('select * from usuario where ra_usuario = ? ', [ra], callback);
+}
+
 AlunosDAO.prototype.requerimentosAluno = function(idusuario, callback){
 	this._connection.query('select * from requerimento inner join usuario on usuario_requerimento=id_usuario where id_usuario = ?', [idusuario], callback);
 }

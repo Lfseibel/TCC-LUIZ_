@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+.swal2-title{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -318,7 +322,7 @@ body{
 }
 /*fim da estilização*/
 
-.form [type='submit']{
+.form [type='button']{
     opacity: 0;
     display: block;
     min-width: 140px;
@@ -327,10 +331,11 @@ body{
     line-height: 40px;
     border-radius: 19px;
     border: none;
-    transition: all .3s ease-out
+    transition: all .3s ease-out;
+    outline: none;
 }
 
-.form-login.is-active .form [type='submit']{
+.form-login.is-active .form [type='button']{
     opacity: 1;
     transform: translateX(0);
     transition: all .4s ease-in;

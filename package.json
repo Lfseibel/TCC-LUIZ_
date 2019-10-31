@@ -24,6 +24,8 @@
     "passport": "^0.4.0",
     "socket.io": "^2.2.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^8.18.4"
+    "sweetalert2": "^8.18.4",
+    "toastmejs": "^1.2.3",
+    "vanilla-antd-message": "^1.1.0"
   }
 }

@@ -78,11 +78,12 @@
         </thead>
         <tbody>
             <% for(var i = 0; i < tudo.length; i++) {%>
-              <tr class="active-row">
+              <tr class="active-row" href="validacao?id_requerimento=<%= tudo[i].id_requerimento %>">
                 <td><%= tudo[i].nome_usuario %></td>
                 <td><%= tudo[i].tipo_requerimento %></td>
                 <td><%= tudo[i].nome_usuario %></td>
               </tr>
+              </a>
           <% } %>
         </tbody>
       </table>

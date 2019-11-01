@@ -1,16 +1,13 @@
 module.exports.validacao = function(application, req, res) {
 	if (req.session.loggedin1) {
-		const vsiape = req.session.siape;
-		const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
-		const servidoresModel = new application.app.models.ServidoresDAO(connection);
-		servidoresModel.pegarNome(vsiape, function(error, result)
-		{
-			var servidor = result;
-			servidoresModel.requerimentosSemana(function(error, result)
-			{
-					res.render("validacao", {tudo: result, servidor: servidor});
-			});		
-		});
+        var connection = application.config.dbConnection();//recupera modulo que conecta com o banco
+        var servidorModel = new application.app.models.ServidoresDAO(connection);
+        
+        var id_requerimento = req.query;
+        
+            servidorModel.getvalidar(id_requerimento, function(error, result){
+                res.render("validacao", {tudo : result});
+            });	   
 	} 
 	else 
 	{
@@ -19,14 +16,7 @@ module.exports.validacao = function(application, req, res) {
 }
 
 module.exports.validar = function(application, req, res){
-    console.log(req);
-    const requerimento = req.body.requerimento;
-    const curso = req.body.curso;
-    const periodo = req.body.periodo;
-    const semestre = req.body.semestre;
-    const turma = req.body.turma;
-    const descricao = req.body.descricao;
-    const usuario = req.session.ra;
+    const requerimento = req.body.detalhamento;
     
     const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
     const alunosModel = new application.app.models.AlunosDAO(connection);

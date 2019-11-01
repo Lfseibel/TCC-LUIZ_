@@ -22,6 +22,10 @@ ServidoresDAO.prototype.requerimentosSemana = function(callback){
 	this._connection.query('select * from requerimento inner join usuario on id_usuario=usuario_requerimento', callback);
 }
 
+ServidoresDAO.prototype.getvalidar = function(id_requerimento, callback){
+	this._connection.query('select * from requerimento inner join usuario on id_usuario=usuario_requerimento where id_requerimento = ' + id_requerimento.id_requerimento, callback);
+}
+
 module.exports = function(){
 	return ServidoresDAO;
 }

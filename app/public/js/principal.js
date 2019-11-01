@@ -49,8 +49,8 @@ $('.lista li').click(function () {
       title: 'Informe o seu curso',
       input: 'select',
       inputOptions: {
-        'técnico em informática para internet': 'Técnico em Informática Para Internet',
-        'jogos digitais': 'Jogos Digitais',
+        'Técnico em Informática para Internet': 'Técnico em Informática Para Internet',
+        'Jogos Digitais': 'Jogos Digitais',
       },
       inputValidator: (value) => {
         if (!value) {
@@ -62,9 +62,9 @@ $('.lista li').click(function () {
       title: 'Informe seu turno',
       input: 'select',
       inputOptions: {
-        'matutino': 'Matutino',
-        'vespertino': 'Vespertino',
-        'noturno': 'Noturno',
+        'Matutino': 'Matutino',
+        'Vespertino': 'Vespertino',
+        'Noturno': 'Noturno',
       },
       inputValidator: (value) => {
         if (!value) {
@@ -76,12 +76,12 @@ $('.lista li').click(function () {
       title: 'Informe seu período',
       input: 'select',
       inputOptions: {
-        '1° semestre': '1° Semestre',
-        '2° semestre': '2° Semestre',
-        '3° semestre': '3° Semestre',
-        '4° semestre': '4° Semestre',
-        '5° semestre': '5° Semestre',
-        '6° semestre': '6° Semestre',
+        '1° Semestre': '1° Semestre',
+        '2° Semestre': '2° Semestre',
+        '3° Semestre': '3° Semestre',
+        '4° Semestre': '4° Semestre',
+        '5° Semestre': '5° Semestre',
+        '6° Semestre': '6° Semestre',
       },
       inputValidator: (value) => {
         if (!value) {
@@ -93,10 +93,10 @@ $('.lista li').click(function () {
       title: 'Informe sua turma',
       input: 'select',
       inputOptions: {
-        'turma a': 'Turma A',
-        'turma b': 'Turma B',
-        'turma c': 'Turma C',
-        'turma d': 'Turma D',
+        'Turma A': 'Turma A',
+        'Turma B': 'Turma B',
+        'Turma C': 'Turma C',
+        'Turma D': 'Turma D',
       },
       inputValidator: (value) => {
         if (!value) {
@@ -136,7 +136,6 @@ $('.lista li').click(function () {
   ])
     .then((result) => {
       if (result.value) {
-        alert(result.value);
         
         var requerimento = new Requerimento(result, id);
         
@@ -177,8 +176,8 @@ class Requerimento {
   constructor(result, id) {
     this.requerimento = id;
     this.curso = result.value[0];
-    this.periodo = result.value[1];
-    this.semestre = result.value[2];
+    this.turno = result.value[1];
+    this.periodo = result.value[2];
     this.turma = result.value[3];
     this.descricao = result.value[4];
     this.file = result.value[5];

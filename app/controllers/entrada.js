@@ -33,10 +33,12 @@ module.exports.enviar = function(application, req, res){
 const requerimento = req.body.requerimento;
 const curso = req.body.curso;
 const periodo = req.body.periodo;
-const semestre = req.body.semestre;
 const turma = req.body.turma;
+const turno = req.body.turno;
 const descricao = req.body.descricao;
 const usuario = req.session.ra;
+
+
 
 const connection = application.config.dbConnection();//recupera modulo que conecta com o banco
 const alunosModel = new application.app.models.AlunosDAO(connection);
@@ -49,8 +51,7 @@ if(req.files)
 			alunosModel.idAluno(usuario, function(error, result)
 			{
 				const idusuario = result[0].id_usuario;
-				console.log(idusuario);
-				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
+				alunosModel.salvarRequerimento(requerimento, curso, periodo, turma, turno, descricao, imagem, idusuario, function(error, result){														
 					res.send('oi');	
 				});	
 			});		
@@ -62,7 +63,7 @@ else
 			{
 				const idusuario = result[0].id_usuario;
 				const imagem = null;
-				alunosModel.salvarRequerimento(requerimento, curso, periodo, semestre, turma, descricao, imagem, idusuario, function(error, result){														
+				alunosModel.salvarRequerimento(requerimento, curso, periodo, turma, turno, descricao, imagem, idusuario, function(error, result){														
 					res.send('oi');	
 				});	
 			});	
